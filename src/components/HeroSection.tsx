@@ -8,7 +8,7 @@ const HeroSection = () => {
       <img
         src={heroDinner}
         alt="Dinner date illustration"
-        className="w-full max-w-md mb-8 opacity-80 invert"
+        className="w-full max-w-md mb-8 opacity-80"
         width={1024}
         height={640}
       />

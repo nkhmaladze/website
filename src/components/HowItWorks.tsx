@@ -65,7 +65,7 @@ const HowItWorks = () => {
               <img
                 src={step.image}
                 alt={step.imageAlt}
-                className="w-36 h-36 object-contain opacity-70 invert"
+                className="w-36 h-36 object-contain opacity-70"
                 loading="lazy"
                 width={512}
                 height={512}
