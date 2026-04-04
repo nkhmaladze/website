@@ -19,7 +19,9 @@ const Navbar = ({ onOpenAbout, onOpenContact }: NavbarProps) => {
         <Link to="/blog" className={navBtnClass}>
           Blog
         </Link>
-        <img src={flippedLogo} alt="Flipped" className="w-9 h-9 mx-1" />
+        <Link to="/" className="mx-1">
+          <img src={flippedLogo} alt="Flipped" className="w-9 h-9" />
+        </Link>
         <a href="#" className={navBtnClass}>
           Download
         </a>
