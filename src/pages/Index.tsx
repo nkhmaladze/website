@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar onOpenAbout={() => setAboutOpen(true)} onOpenContact={() => setContactOpen(true)} />
+      <Navbar onOpenAbout={() => setAboutOpen(true)} />
       <HeroSection />
       <HowItWorks />
       <Footer onOpenLegal={() => setLegalOpen(true)} onOpenContact={() => setContactOpen(true)} />

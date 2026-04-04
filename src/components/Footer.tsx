@@ -3,54 +3,55 @@ interface FooterProps {
   onOpenContact: () => void;
 }
 
+const footerBtnClass =
+  "inline-flex min-h-9 items-center justify-center rounded-lg bg-[#2a2a2a] px-5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors hover:bg-[#353535]";
+
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   return (
-    <footer className="py-10 px-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Links row */}
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <button
-            onClick={onOpenLegal}
-            className="px-4 py-1.5 border border-muted-foreground/30 rounded-full text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Legal
-          </button>
-          <button
-            onClick={onOpenContact}
-            className="px-4 py-1.5 border border-muted-foreground/30 rounded-full text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Contact
-          </button>
-        </div>
+    <footer className="relative overflow-hidden px-6 pb-8 pt-6">
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none"
+        aria-hidden
+      >
+        <span className="whitespace-nowrap font-heading text-[clamp(3.5rem,16vw,10rem)] font-bold italic text-foreground/[0.07]">
+          Flipped
+        </span>
+      </div>
 
-        {/* Social icons */}
-        <div className="flex items-center justify-center gap-4 mb-10">
-          {["LinkedIn", "X", "YouTube", "Instagram", "Threads"].map((platform) => (
-            <a
-              key={platform}
-              href="#"
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-              aria-label={platform}
-            >
-              {platform === "LinkedIn" && "in"}
-              {platform === "X" && "𝕏"}
-              {platform === "YouTube" && "▶"}
-              {platform === "Instagram" && "◎"}
-              {platform === "Threads" && "@"}
-            </a>
-          ))}
+      <div className="relative mx-auto flex min-h-[9rem] max-w-6xl flex-col justify-end">
+        <div className="flex flex-col gap-6 pt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-5 sm:pt-12">
+          <p className="order-2 font-mono text-xs text-muted-foreground/80 sm:order-1">
+            © 2024 Flipped Social, Inc.
+          </p>
+          <div className="order-1 flex flex-col items-start gap-3 sm:order-2 sm:items-end">
+            <div className="flex flex-wrap gap-3">
+              <button type="button" onClick={onOpenLegal} className={footerBtnClass}>
+                Legal
+              </button>
+              <button type="button" onClick={onOpenContact} className={footerBtnClass}>
+                Contact
+              </button>
+            </div>
+            <div className="flex flex-wrap items-center gap-5 text-sm text-foreground/80">
+              {[
+                { label: "LinkedIn", char: "in" },
+                { label: "X", char: "𝕏" },
+                { label: "YouTube", char: "▶" },
+                { label: "Instagram", char: "◎" },
+                { label: "TikTok", char: "♪" },
+              ].map(({ label, char }) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="transition-colors hover:text-foreground"
+                  aria-label={label}
+                >
+                  {char}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-
-        {/* Big brand text */}
-        <div className="text-center">
-          <h2 className="font-heading text-6xl md:text-8xl font-bold text-foreground/5 italic select-none">
-            Flipped
-          </h2>
-        </div>
-
-        <p className="text-center text-muted-foreground/50 text-xs font-mono mt-4">
-          © 2025 Flipped Social, Inc.
-        </p>
       </div>
     </footer>
   );

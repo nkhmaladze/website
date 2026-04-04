@@ -9,12 +9,19 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
+/** GitHub Pages project URLs use /repo-name/; Vite sets import.meta.env.BASE_URL from `vite build --base`. */
+const routerBasename = (() => {
+  const base = import.meta.env.BASE_URL;
+  if (base === "/" || base === "") return undefined;
+  return base.endsWith("/") ? base.slice(0, -1) : base;
+})();
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/events" element={<Events />} />
