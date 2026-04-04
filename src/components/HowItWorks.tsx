@@ -12,6 +12,7 @@ const steps = [
     imageAlt: "Filling out profile",
     color: "text-pink-300",
     borderColor: "border-pink-300",
+    imgSize: "w-52 h-44",
   },
   {
     number: "2",
@@ -21,6 +22,7 @@ const steps = [
     imageAlt: "Clock showing Sunday",
     color: "text-yellow-200",
     borderColor: "border-yellow-200",
+    imgSize: "w-40 h-32",
   },
   {
     number: "3",
@@ -30,6 +32,7 @@ const steps = [
     imageAlt: "Calendar with date picked",
     color: "text-emerald-300",
     borderColor: "border-emerald-300",
+    imgSize: "w-40 h-32",
   },
   {
     number: "4",
@@ -39,6 +42,7 @@ const steps = [
     imageAlt: "Couple at restaurant",
     color: "text-orange-300",
     borderColor: "border-orange-300",
+    imgSize: "w-52 h-44",
   },
 ];
 
@@ -59,7 +63,7 @@ const HowItWorks = () => {
               } items-center gap-4 md:gap-8`}
             >
               {/* Image */}
-              <div className="flex-shrink-0 w-40 h-32 flex items-center justify-center">
+              <div className={`flex-shrink-0 ${step.imgSize} flex items-center justify-center`}>
                 <img
                   src={step.image}
                   alt={step.imageAlt}
