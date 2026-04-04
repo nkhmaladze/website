@@ -42,6 +42,7 @@ const steps = [
     imageAlt: "Couple at restaurant",
     color: "text-orange-300",
     borderColor: "border-orange-300",
+    imgSize: "w-52 h-44",
   },
 ];
 
