@@ -4,7 +4,7 @@ import heroDinner from "@/assets/hero-dinner.png";
 const HeroSection = () => {
   return (
     <section className="flex flex-col items-center justify-center min-h-screen pt-20 pb-16 px-6 text-center">
-      <img src={crystalIcon} alt="Flipped crystal" className="w-16 h-16 mb-6" />
+      <img src={crystalIcon} alt="Flipped crystal" className="w-32 h-32 mb-6" />
       <img
         src={heroDinner}
         alt="Dinner date illustration"
