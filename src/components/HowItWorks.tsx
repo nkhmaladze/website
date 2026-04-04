@@ -32,6 +32,7 @@ const steps = [
     imageAlt: "Calendar with date picked",
     color: "text-emerald-300",
     borderColor: "border-emerald-300",
+    imgSize: "w-40 h-32",
   },
   {
     number: "4",
