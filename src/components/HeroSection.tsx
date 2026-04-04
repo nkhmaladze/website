@@ -4,7 +4,7 @@ import heroDinner from "@/assets/hero-dinner.png";
 const HeroSection = () => {
   return (
     <section className="flex flex-col items-center justify-center min-h-screen pt-20 pb-16 px-6 text-center">
-      <img src={crystalIcon} alt="Flipped crystal" className="w-32 h-32 mb-6" />
+      <img src={crystalIcon} alt="Flipped crystal" className="w-32 h-32 mb-2" />
       <img
         src={heroDinner}
         alt="Dinner date illustration"
@@ -20,7 +20,7 @@ const HeroSection = () => {
       </p>
       <a
         href="#"
-        className="inline-flex items-center gap-2 px-8 py-3 border border-foreground rounded-full text-sm font-mono uppercase tracking-wider text-foreground hover:bg-foreground hover:text-background transition-colors"
+        className="inline-flex items-center gap-2 px-8 py-3 bg-[#2a2a2a] rounded-lg text-sm font-mono uppercase tracking-wider text-foreground hover:bg-[#353535] transition-colors"
       >
         I want in 🍽
       </a>
