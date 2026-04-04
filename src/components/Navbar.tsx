@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import crystalIcon from "@/assets/crystal-icon.png";
+import flippedLogo from "@/assets/flipped-logo.png";
 
 interface NavbarProps {
   onOpenAbout: () => void;
