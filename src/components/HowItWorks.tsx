@@ -12,6 +12,7 @@ const steps = [
     imageAlt: "Filling out profile",
     color: "text-pink-300",
     borderColor: "border-pink-300",
+    imgSize: "w-52 h-44",
   },
   {
     number: "2",
