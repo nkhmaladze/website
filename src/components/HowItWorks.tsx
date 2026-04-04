@@ -22,6 +22,7 @@ const steps = [
     imageAlt: "Clock showing Sunday",
     color: "text-yellow-200",
     borderColor: "border-yellow-200",
+    imgSize: "w-40 h-32",
   },
   {
     number: "3",
