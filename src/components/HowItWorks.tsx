@@ -63,7 +63,7 @@ const HowItWorks = () => {
               } items-center gap-4 md:gap-8`}
             >
               {/* Image */}
-              <div className="flex-shrink-0 w-40 h-32 flex items-center justify-center">
+              <div className={`flex-shrink-0 ${step.imgSize} flex items-center justify-center`}>
                 <img
                   src={step.image}
                   alt={step.imageAlt}
