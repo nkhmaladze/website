@@ -9,7 +9,7 @@ const HeroSection = () => {
         <img
           src={crystalIcon}
           alt="Flipped crystal"
-          className="h-28 w-28 -mb-10 md:h-32 md:w-32 md:-mb-12"
+          className="h-36 w-28 -mb-10 md:h-40 md:w-32 md:-mb-12 object-contain"
         />
         <img
           src={heroDinner}
