@@ -36,13 +36,13 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 pb-3 pt-[max(0.875rem,env(safe-area-inset-top,0px))]">
 
       {/* Mobile layout */}
-      <div className="grid grid-cols-3 items-center md:hidden">
-        <Link to="/" className="flex justify-start">
+      <div className="flex items-center justify-center gap-3 md:hidden">
+        <Link to="/">
           <img src={flippedLogo} alt="Flipped" className="h-9 w-9 shrink-0" />
         </Link>
 
         {/* Hamburger menu */}
-        <div ref={menuRef} className="relative flex justify-center">
+        <div ref={menuRef} className="relative">
           <button
             type="button"
             onClick={() => { setMenuOpen(o => !o); setSocialOpen(false); }}
@@ -84,7 +84,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
         </div>
 
         {/* Social menu */}
-        <div ref={socialRef} className="relative flex justify-end">
+        <div ref={socialRef} className="relative">
           <button
             type="button"
             onClick={() => { setSocialOpen(o => !o); setMenuOpen(false); }}
