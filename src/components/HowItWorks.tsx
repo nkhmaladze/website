@@ -1,3 +1,4 @@
+import { useTheme } from "next-themes";
 import howItWorksImg from "@/assets/howitworks.png";
 import stepProfile from "@/assets/step-profile.png";
 import stepSunday from "@/assets/step-sunday.png";
@@ -7,13 +8,22 @@ import stepLabel1 from "@/assets/step-label-1.png";
 import stepLabel2 from "@/assets/step-label-2.png";
 import stepLabel3 from "@/assets/step-label-3.png";
 import stepLabel4 from "@/assets/step-label-4.png";
+import stepProfileLight from "@/assets/step-profile-light.png";
+import stepSundayLight from "@/assets/step-sunday-light.png";
+import stepPickLight from "@/assets/step-pick-light.png";
+import stepShowupLight from "@/assets/step-showup-light.png";
+import stepLabel1Light from "@/assets/step-label-1-light.png";
+import stepLabel2Light from "@/assets/step-label-2-light.png";
+import stepLabel3Light from "@/assets/step-label-3-light.png";
+import stepLabel4Light from "@/assets/step-label-4-light.png";
 
-const steps = [
+const darkSteps = [
   {
     number: "1",
     label: stepLabel1,
-    description: "Your type, your vibe, your schedule, your food taste. We'll handle the rest.",
+    labelLight: stepLabel1Light,
     image: stepSunday,
+    imageLight: stepSundayLight,
     imageAlt: "Filling out profile",
     imgSize: "w-36 h-28",
     labelMt: "",
@@ -22,9 +32,10 @@ const steps = [
   {
     number: "2",
     label: stepLabel2,
-    description: "Every week, a fresh set of matches — each one already comes with a restaurant, a day, and a time.",
+    labelLight: stepLabel2Light,
     image: stepProfile,
-    imageAlt: "Clock showing Sunday",
+    imageLight: stepProfileLight,
+    imageAlt: "Group of people",
     imgSize: "w-44 h-36",
     labelMt: "mt-6",
     imgMt: "",
@@ -32,8 +43,9 @@ const steps = [
   {
     number: "3",
     label: stepLabel3,
-    description: "Send requests, get requests, adjust the time if you need to. First one you both say yes to? That's your date this week.",
+    labelLight: stepLabel3Light,
     image: stepPick,
+    imageLight: stepPickLight,
     imageAlt: "Calendar with date picked",
     imgSize: "w-32 h-28",
     labelMt: "",
@@ -42,8 +54,9 @@ const steps = [
   {
     number: "4",
     label: stepLabel4,
-    description: 'No small talk. No "let\'s grab drinks sometime." A real dinner date, this week, with someone actually worth meeting.',
+    labelLight: stepLabel4Light,
     image: stepShowup,
+    imageLight: stepShowupLight,
     imageAlt: "Couple at restaurant",
     imgSize: "w-44 h-36",
     labelMt: "",
@@ -52,20 +65,25 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
   return (
     <section className="px-6 pb-10 pt-6 md:pt-8">
       <h2 className="mb-6 text-center font-heading text-3xl font-medium md:mb-8 md:text-4xl">
         How it works.
       </h2>
       <div className="mx-auto max-w-2xl space-y-2 md:space-y-3">
-        {steps.map((step, index) => {
+        {darkSteps.map((step, index) => {
           const isEven = index % 2 === 0;
+          const labelSrc = isLight ? step.labelLight : step.label;
+          const imageSrc = isLight ? step.imageLight : step.image;
 
           const imageEl = (
             <div className={`flex flex-shrink-0 ${step.imgMt}`}>
               <div className={`${step.imgSize}`}>
                 <img
-                  src={step.image}
+                  src={imageSrc}
                   alt={step.imageAlt}
                   className="max-h-full max-w-full object-contain opacity-90"
                   loading="lazy"
@@ -79,7 +97,7 @@ const HowItWorks = () => {
           const textEl = (
             <div className={`flex flex-shrink-0 items-start ${step.labelMt}`}>
               <img
-                src={step.label}
+                src={labelSrc}
                 alt={`Step ${step.number}`}
                 className="h-auto w-56 object-contain"
               />

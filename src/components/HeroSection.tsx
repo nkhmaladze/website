@@ -1,8 +1,11 @@
 import { MessageCircle } from "lucide-react";
+import { useTheme } from "next-themes";
 import crystalIcon from "@/assets/crystal-icon.png";
 import heroDinner from "@/assets/hero-dinner.png";
+import heroDinnerLight from "@/assets/hero-dinner-light.png";
 
 const HeroSection = () => {
+  const { theme } = useTheme();
   return (
     <section className="flex flex-col items-center px-6 pb-8 pt-24 text-center md:pt-28">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center">
@@ -12,7 +15,7 @@ const HeroSection = () => {
           className="h-36 w-28 -mb-10 md:h-40 md:w-32 md:-mb-12 object-contain"
         />
         <img
-          src={heroDinner}
+          src={theme === "light" ? heroDinnerLight : heroDinner}
           alt="Dinner date illustration"
           className="mb-3 w-full max-w-md opacity-90"
           width={1024}

@@ -4,7 +4,7 @@ interface FooterProps {
 }
 
 const footerBtnClass =
-  "inline-flex min-h-9 items-center justify-center rounded-lg bg-[#2a2a2a] px-5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors hover:bg-[#353535]";
+  "inline-flex min-h-9 items-center justify-center rounded-lg px-5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors bg-[#D5D1CC] hover:bg-[#C8C4BF] dark:bg-[#2a2a2a] dark:hover:bg-[#353535]";
 
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   return (
@@ -21,7 +21,7 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
       <div className="relative mx-auto flex min-h-[9rem] max-w-6xl flex-col justify-end">
         <div className="flex flex-col gap-6 pt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-5 sm:pt-12">
           <p className="order-2 font-mono text-xs text-muted-foreground/80 sm:order-1">
-            © 2024 Flipped Social, Inc.
+            © 2026 Flipped Social, Inc.
           </p>
           <div className="order-1 flex flex-col items-start gap-3 sm:order-2 sm:items-end">
             <div className="flex flex-wrap gap-3">

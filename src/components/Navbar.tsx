@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "next-themes";
 import flippedLogo from "@/assets/flipped-logo.png";
 
 interface NavbarProps {
@@ -7,7 +8,7 @@ interface NavbarProps {
 }
 
 const navBtnClass =
-  "inline-flex min-h-9 shrink-0 items-center justify-center px-4 leading-none bg-[#2a2a2a] rounded-lg text-xs font-mono uppercase tracking-wider text-foreground hover:bg-[#353535] transition-colors";
+  "inline-flex min-h-9 shrink-0 items-center justify-center px-4 leading-none rounded-lg text-xs font-mono uppercase tracking-wider text-foreground transition-colors bg-[#D5D1CC] hover:bg-[#C8C4BF] dark:bg-[#2a2a2a] dark:hover:bg-[#353535]";
 
 const socials = [
   { label: "Instagram" },
@@ -18,6 +19,7 @@ const socials = [
 ];
 
 const Navbar = ({ onOpenAbout }: NavbarProps) => {
+  const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -52,19 +54,20 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             ≡
           </button>
           {menuOpen && (
-            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#2a2a2a] py-1 shadow-lg">
+            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] dark:bg-[#2a2a2a] py-1 shadow-lg">
               {[
                 { label: "About", action: () => { onOpenAbout(); setMenuOpen(false); } },
                 { label: "Blog", href: "/blog" },
                 { label: "Download", href: "#" },
                 { label: "Events", href: "/events" },
+                { label: theme === "dark" ? "Light Mode" : "Dark Mode", action: () => { setTheme(theme === "dark" ? "light" : "dark"); setMenuOpen(false); } },
               ].map((item) =>
                 item.href ? (
                   <Link
                     key={item.label}
                     to={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#353535] border-b border-white/10 last:border-0"
+                    className="block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] dark:hover:bg-[#353535] border-b border-black/10 dark:border-white/10 last:border-0"
                   >
                     {item.label}
                   </Link>
@@ -73,7 +76,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                     key={item.label}
                     type="button"
                     onClick={item.action}
-                    className="w-full text-left block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#353535] border-b border-white/10 last:border-0"
+                    className="w-full text-left block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] dark:hover:bg-[#353535] border-b border-black/10 dark:border-white/10 last:border-0"
                   >
                     {item.label}
                   </button>
@@ -94,13 +97,13 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             @
           </button>
           {socialOpen && (
-            <div className="absolute right-0 top-full mt-2 w-44 rounded-lg bg-[#2a2a2a] py-1 shadow-lg">
+            <div className="absolute right-0 top-full mt-2 w-44 rounded-lg bg-[#D5D1CC] dark:bg-[#2a2a2a] py-1 shadow-lg">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href="#"
                   onClick={() => setSocialOpen(false)}
-                  className="block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#353535] border-b border-white/10 last:border-0"
+                  className="block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] dark:hover:bg-[#353535] border-b border-black/10 dark:border-white/10 last:border-0"
                 >
                   {s.label}
                 </a>
@@ -138,6 +141,14 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
               <Link to="/events" className={navBtnClass}>
                 Events
               </Link>
+              <button
+                type="button"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className={navBtnClass}
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? "☀" : "☽"}
+              </button>
             </div>
           </div>
         </div>
