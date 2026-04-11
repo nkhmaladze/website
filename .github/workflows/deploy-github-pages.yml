@@ -32,9 +32,7 @@ jobs:
           npm ci
           npm run build -- --base "/${{ github.event.repository.name }}/"
 
-      # SPA: direct loads of /events etc. must serve the app shell (GitHub Pages 404 → 404.html).
-      - name: SPA fallback
-        run: cp dist/index.html dist/404.html
+      # SPA: 404.html in public/ handles the redirect; no cp needed.
 
       - uses: actions/upload-pages-artifact@v3
         with:
