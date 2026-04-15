@@ -13,7 +13,7 @@ const Index = () => {
   const [legalOpen, setLegalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen">
+    <div className="overflow-x-hidden">
       <Navbar onOpenAbout={() => setAboutOpen(true)} />
       <HeroSection />
       <HowItWorks />

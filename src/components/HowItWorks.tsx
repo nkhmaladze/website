@@ -25,7 +25,7 @@ const darkSteps = [
     image: stepSunday,
     imageLight: stepSundayLight,
     imageAlt: "Filling out profile",
-    imgSize: "w-36 h-28",
+    imgSize: "w-36 h-28 md:w-44 md:h-36",
     labelMt: "",
     imgMt: "",
   },
@@ -36,8 +36,8 @@ const darkSteps = [
     image: stepProfile,
     imageLight: stepProfileLight,
     imageAlt: "Group of people",
-    imgSize: "w-44 h-36",
-    labelMt: "mt-6",
+    imgSize: "w-40 h-32 md:w-56 md:h-44",
+    labelMt: "-mt-10",
     imgMt: "",
   },
   {
@@ -47,9 +47,9 @@ const darkSteps = [
     image: stepPick,
     imageLight: stepPickLight,
     imageAlt: "Calendar with date picked",
-    imgSize: "w-32 h-28",
+    imgSize: "w-36 h-28 md:w-40 md:h-36",
     labelMt: "",
-    imgMt: "-mt-4",
+    imgMt: "",
   },
   {
     number: "4",
@@ -58,29 +58,29 @@ const darkSteps = [
     image: stepShowup,
     imageLight: stepShowupLight,
     imageAlt: "Couple at restaurant",
-    imgSize: "w-44 h-36",
-    labelMt: "",
-    imgMt: "",
+    imgSize: "w-40 h-32 md:w-56 md:h-44",
+    labelMt: "-mt-6",
+    imgMt: "mt-6",
   },
 ];
 
 const HowItWorks = () => {
-  const { theme } = useTheme();
-  const isLight = theme === "light";
+  const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
 
   return (
-    <section className="px-6 pb-10 pt-6 md:pt-8">
-      <h2 className="mb-6 text-center font-heading text-3xl font-medium md:mb-8 md:text-4xl">
+    <section className="flex h-screen flex-col items-center justify-center px-6 py-10">
+      <h2 className="mb-8 text-center font-heading text-4xl font-medium md:mb-10 md:text-5xl">
         How it works.
       </h2>
-      <div className="mx-auto max-w-2xl space-y-2 md:space-y-3">
+      <div className="mx-auto max-w-4xl space-y-3 md:space-y-4">
         {darkSteps.map((step, index) => {
           const isEven = index % 2 === 0;
           const labelSrc = isLight ? step.labelLight : step.label;
           const imageSrc = isLight ? step.imageLight : step.image;
 
           const imageEl = (
-            <div className={`flex flex-shrink-0 ${step.imgMt}`}>
+            <div className={`flex flex-shrink-0 ${step.imgMt} ${isEven ? "mr-2 md:mr-16" : "-ml-8 md:-ml-2"}`}>
               <div className={`${step.imgSize}`}>
                 <img
                   src={imageSrc}
@@ -95,17 +95,17 @@ const HowItWorks = () => {
           );
 
           const textEl = (
-            <div className={`flex flex-shrink-0 items-start ${step.labelMt}`}>
+            <div className={`flex flex-shrink-0 items-start ${step.labelMt} ${isEven ? "-ml-6 md:-ml-10" : "-mr-6 md:-mr-10"}`}>
               <img
                 src={labelSrc}
                 alt={`Step ${step.number}`}
-                className="h-auto w-56 object-contain"
+                className="h-auto w-44 md:w-72 object-contain"
               />
             </div>
           );
 
           return (
-            <div key={step.number} className={`flex items-start justify-center gap-10 md:gap-14 ${index === 2 ? "-mt-4" : ""}`}>
+            <div key={step.number} className="flex w-full items-center justify-between">
               {isEven ? <>{textEl}{imageEl}</> : <>{imageEl}{textEl}</>}
             </div>
           );

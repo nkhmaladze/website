@@ -5,34 +5,34 @@ import heroDinner from "@/assets/hero-dinner.png";
 import heroDinnerLight from "@/assets/hero-dinner-light.png";
 
 const HeroSection = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   return (
-    <section className="flex flex-col items-center px-6 pb-8 pt-24 text-center md:pt-28">
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center">
+    <section className="flex h-screen flex-col items-center justify-center px-6 pt-16 text-center md:pt-20">
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center">
         <img
           src={crystalIcon}
           alt="Flipped crystal"
-          className="h-36 w-28 -mb-10 md:h-40 md:w-32 md:-mb-12 object-contain"
+          className="h-52 w-40 -mb-40 md:h-60 md:w-48 md:-mb-[11.25rem] object-contain"
         />
         <img
-          src={theme === "light" ? heroDinnerLight : heroDinner}
+          src={resolvedTheme === "light" ? heroDinnerLight : heroDinner}
           alt="Dinner date illustration"
-          className="mb-3 w-full max-w-md opacity-90"
+          className="mb-4 w-full max-w-2xl opacity-90"
           width={1024}
           height={640}
         />
-        <h1 className="mb-2 font-heading text-3xl font-medium tracking-tight text-foreground md:text-5xl">
+        <h1 className="mb-3 font-heading text-5xl font-medium tracking-tight text-foreground md:text-7xl">
           One dinner date. Every week.
         </h1>
-        <p className="mb-4 font-mono text-sm text-foreground/80 md:text-base">
+        <p className="mb-6 font-mono text-lg text-foreground/80 md:text-2xl">
           Skip the texting. Just show up.
         </p>
         <a
           href="#"
-          className="inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-2.5 font-mono text-sm uppercase tracking-wider text-background transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-3 rounded-lg bg-foreground px-9 py-4 font-mono text-base uppercase tracking-wider text-background transition-opacity hover:opacity-90"
         >
           I want in
-          <MessageCircle className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
+          <MessageCircle className="h-6 w-6 shrink-0" strokeWidth={2} aria-hidden />
         </a>
       </div>
     </section>

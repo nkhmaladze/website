@@ -8,18 +8,18 @@ const footerBtnClass =
 
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   return (
-    <footer className="relative overflow-hidden px-6 pb-8 pt-6">
+    <footer className="relative flex h-[25vh] flex-col justify-end overflow-hidden px-6 pb-8">
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
         aria-hidden
       >
-        <span className="whitespace-nowrap font-heading text-[clamp(3.5rem,16vw,10rem)] font-bold italic text-foreground/[0.07]">
+        <span className="whitespace-nowrap font-heading text-[clamp(2.5rem,16vh,10rem)] font-bold italic text-foreground/[0.07]">
           Flipped
         </span>
       </div>
 
-      <div className="relative mx-auto flex min-h-[9rem] max-w-6xl flex-col justify-end">
-        <div className="flex flex-col gap-6 pt-10 sm:flex-row sm:items-end sm:justify-between sm:gap-5 sm:pt-12">
+      <div className="relative w-full">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
           <p className="order-2 font-mono text-xs text-muted-foreground/80 sm:order-1">
             © 2026 Flipped Social, Inc.
           </p>

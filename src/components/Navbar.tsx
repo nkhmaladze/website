@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "next-themes";
 import flippedLogo from "@/assets/flipped-logo.png";
 
 interface NavbarProps {
@@ -19,7 +18,6 @@ const socials = [
 ];
 
 const Navbar = ({ onOpenAbout }: NavbarProps) => {
-  const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -60,7 +58,6 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                 { label: "Blog", href: "/blog" },
                 { label: "Download", href: "#" },
                 { label: "Events", href: "/events" },
-                { label: theme === "dark" ? "Light Mode" : "Dark Mode", action: () => { setTheme(theme === "dark" ? "light" : "dark"); setMenuOpen(false); } },
               ].map((item) =>
                 item.href ? (
                   <Link
@@ -114,7 +111,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
       </div>
 
       {/* Desktop layout */}
-      <div className="relative mx-auto hidden max-w-6xl md:block">
+      <div className="relative hidden w-full md:block">
         <Link
           to="/"
           className="absolute left-0 top-1/2 z-10 -translate-y-1/2 font-heading text-lg italic text-foreground md:text-xl"
@@ -141,14 +138,6 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
               <Link to="/events" className={navBtnClass}>
                 Events
               </Link>
-              <button
-                type="button"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className={navBtnClass}
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? "☀" : "☽"}
-              </button>
             </div>
           </div>
         </div>
