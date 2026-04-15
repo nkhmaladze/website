@@ -12,7 +12,7 @@ const HeroSection = () => {
         <img
           src={crystalIcon}
           alt="Flipped crystal"
-          className="h-52 w-40 -mb-40 md:h-60 md:w-48 md:-mb-[11.25rem] object-contain"
+          className="h-52 w-40 -mb-[8.5rem] md:h-60 md:w-48 md:-mb-[11.25rem] object-contain"
         />
         <img
           src={resolvedTheme === "light" ? heroDinnerLight : heroDinner}
