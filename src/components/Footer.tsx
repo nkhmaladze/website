@@ -8,7 +8,7 @@ const footerBtnClass =
 
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   return (
-    <footer className="relative flex h-[25vh] flex-col justify-end overflow-hidden px-6 pb-8">
+    <footer className="relative flex min-h-[220px] flex-col justify-end overflow-hidden px-6 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-10 md:h-[25vh] md:min-h-0 md:pb-8 md:pt-0">
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
         aria-hidden
@@ -19,12 +19,12 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
       </div>
 
       <div className="relative w-full">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
           <p className="order-2 font-mono text-xs text-muted-foreground/80 sm:order-1">
             © 2026 Flipped Social, Inc.
           </p>
           <div className="order-1 flex flex-col items-start gap-3 sm:order-2 sm:items-end">
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               <button type="button" onClick={onOpenLegal} className={footerBtnClass}>
                 Legal
               </button>
@@ -32,7 +32,7 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
                 Contact
               </button>
             </div>
-            <div className="flex flex-wrap items-center gap-5 text-sm text-foreground/80">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-foreground/80 sm:gap-5">
               {[
                 { label: "LinkedIn", char: "in" },
                 { label: "X", char: "𝕏" },

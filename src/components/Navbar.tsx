@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import flippedLogo from "@/assets/flipped-logo.png";
+import { useTheme } from "next-themes";
+import flippedLogoDark from "@/assets/flipped-logo-dark.png";
+import flippedLogoLight from "@/assets/flipped-logo-light.png";
 
 interface NavbarProps {
   onOpenAbout: () => void;
@@ -18,10 +20,12 @@ const socials = [
 ];
 
 const Navbar = ({ onOpenAbout }: NavbarProps) => {
+  const { resolvedTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
+  const logoSrc = resolvedTheme === "light" ? flippedLogoLight : flippedLogoDark;
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -34,11 +38,10 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 pb-3 pt-[max(0.875rem,env(safe-area-inset-top,0px))]">
-
       {/* Mobile layout */}
-      <div className="flex items-center justify-center gap-3 md:hidden">
+      <div className="mx-auto flex w-full items-center justify-center gap-3 md:hidden">
         <Link to="/">
-          <img src={flippedLogo} alt="Flipped" className="h-9 w-9 shrink-0" />
+          <img src={logoSrc} alt="Flipped" className="h-10 w-10 shrink-0 rounded-xl" />
         </Link>
 
         {/* Hamburger menu */}
@@ -52,7 +55,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             ≡
           </button>
           {menuOpen && (
-            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] dark:bg-[#2a2a2a] py-1 shadow-lg">
+            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
               {[
                 { label: "About", action: () => { onOpenAbout(); setMenuOpen(false); } },
                 { label: "Blog", href: "/blog" },
@@ -64,7 +67,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                     key={item.label}
                     to={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] dark:hover:bg-[#353535] border-b border-black/10 dark:border-white/10 last:border-0"
+                    className="block border-b border-black/10 px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
                   >
                     {item.label}
                   </Link>
@@ -73,7 +76,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                     key={item.label}
                     type="button"
                     onClick={item.action}
-                    className="w-full text-left block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] dark:hover:bg-[#353535] border-b border-black/10 dark:border-white/10 last:border-0"
+                    className="block w-full border-b border-black/10 px-5 py-3 text-left font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
                   >
                     {item.label}
                   </button>
@@ -94,13 +97,13 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             @
           </button>
           {socialOpen && (
-            <div className="absolute right-0 top-full mt-2 w-44 rounded-lg bg-[#D5D1CC] dark:bg-[#2a2a2a] py-1 shadow-lg">
+            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href="#"
                   onClick={() => setSocialOpen(false)}
-                  className="block px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] dark:hover:bg-[#353535] border-b border-black/10 dark:border-white/10 last:border-0"
+                  className="block border-b border-black/10 px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
                 >
                   {s.label}
                 </a>
@@ -129,7 +132,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
               </Link>
             </div>
             <Link to="/" className="inline-flex shrink-0 items-center justify-center justify-self-center">
-              <img src={flippedLogo} alt="Flipped" className="h-9 w-9 shrink-0" />
+              <img src={logoSrc} alt="Flipped" className="h-10 w-10 shrink-0 rounded-xl" />
             </Link>
             <div className="flex items-center justify-start gap-2 md:gap-3">
               <a href="#" className={navBtnClass}>

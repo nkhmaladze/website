@@ -1,17 +1,26 @@
 import { Link } from "react-router-dom";
-import crystalIcon from "@/assets/crystal-icon.png";
+import { useTheme } from "next-themes";
+import comingSoonDark from "@/assets/coming-soon-dark.png";
+import comingSoonLight from "@/assets/coming-soon-light.png";
 
 const Events = () => {
+  const { resolvedTheme } = useTheme();
+  const comingSoonImage = resolvedTheme === "light" ? comingSoonLight : comingSoonDark;
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
-      <img src={crystalIcon} alt="Flipped" className="w-12 h-12 mb-6" />
-      <h1 className="font-heading text-4xl md:text-5xl font-medium mb-4">Coming Soon.</h1>
-      <p className="text-muted-foreground font-mono text-sm mb-8">
+    <div className="flex min-h-screen flex-col items-center justify-center px-6 py-16 text-center">
+      <img
+        src={comingSoonImage}
+        alt="Flipped coming soon illustration"
+        className="mb-8 w-full max-w-4xl opacity-95"
+      />
+      <h1 className="mb-4 font-heading text-4xl font-medium md:text-5xl">Coming Soon.</h1>
+      <p className="mb-8 max-w-md font-mono text-sm text-muted-foreground">
         Flipped events are on the way. Stay tuned.
       </p>
       <Link
         to="/"
-        className="px-6 py-2.5 border border-foreground rounded-full text-sm font-mono uppercase tracking-wider text-foreground hover:bg-foreground hover:text-background transition-colors"
+        className="rounded-full border border-foreground px-6 py-2.5 text-sm font-mono uppercase tracking-wider text-foreground transition-colors hover:bg-foreground hover:text-background"
       >
         Back home
       </Link>
