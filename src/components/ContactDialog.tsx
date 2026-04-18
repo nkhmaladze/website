@@ -31,9 +31,14 @@ const ContactDialog = ({ open, onOpenChange }: ContactDialogProps) => {
           <p className="text-muted-foreground text-xs">
             Own a restaurant, venue, or fun place?
           </p>
-          <Button variant="outline" className="w-full border-muted-foreground/30 text-foreground font-mono text-xs uppercase tracking-wider">
+          <a
+            href="https://forms.gle/Y9bF2dYX6PRkCdP27"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full items-center justify-center rounded-md border border-muted-foreground/30 bg-background px-4 py-2 font-mono text-xs uppercase tracking-wider text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
             Partner with Flipped
-          </Button>
+          </a>
 
           <div className="border-t border-border pt-4">
             <p className="text-foreground text-sm mb-3">

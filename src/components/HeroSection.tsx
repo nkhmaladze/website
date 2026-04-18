@@ -28,7 +28,9 @@ const HeroSection = () => {
           Skip the texting. Just show up.
         </p>
         <a
-          href="#"
+          href="https://forms.gle/6LvmBuAWfoPRm87v5"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-3 rounded-lg bg-foreground px-7 py-3 font-mono text-sm uppercase tracking-wider text-background transition-opacity hover:opacity-90 sm:px-9 sm:py-4 sm:text-base"
         >
           I want in

@@ -50,21 +50,14 @@ const LegalDialog = ({ open, onOpenChange }: LegalDialogProps) => {
                 privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard
                 your information when you use our mobile application and website.
               </p>
-              <p>
-                We collect information you provide directly to us, such as your name, email address,
-                date of birth, location, dining preferences, and profile information. We also
-                automatically collect certain information about your device and usage of our services.
-              </p>
-              <p>
-                We use the information we collect to provide, maintain, and improve our services,
-                to match you with compatible dinner dates, and to communicate with you about your
-                account and our services.
-              </p>
-              <p>
-                We do not sell your personal information to third parties. We may share your
-                information with service providers who assist us in operating our platform,
-                conducting our business, or serving our users.
-              </p>
+              <a
+                href="/privacy-policy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                View full Privacy Policy →
+              </a>
             </>
           ) : (
             <>
@@ -73,21 +66,14 @@ const LegalDialog = ({ open, onOpenChange }: LegalDialogProps) => {
                 by these Terms and Conditions. If you do not agree to these terms, please do not
                 use our services.
               </p>
-              <p>
-                You must be at least 18 years old to use Flipped. You are responsible for
-                maintaining the confidentiality of your account credentials and for all activities
-                that occur under your account.
-              </p>
-              <p>
-                Flipped reserves the right to modify or discontinue, temporarily or permanently,
-                the service with or without notice. We shall not be liable to you or any third
-                party for any modification, suspension, or discontinuance of the service.
-              </p>
-              <p>
-                All content and materials available through our service are protected by
-                intellectual property rights and are the property of Flipped Social Inc or its
-                licensors.
-              </p>
+              <a
+                href="/terms-of-service.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                View full Terms & Conditions →
+              </a>
             </>
           )}
         </div>

@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { useTheme } from "next-themes";
 import flippedLogoDark from "@/assets/flipped-logo-dark.png";
 import flippedLogoLight from "@/assets/flipped-logo-light.png";
+import navBurgerDark from "@/assets/nav-burger-dark.svg";
+import navBurgerLight from "@/assets/nav-burger-light.svg";
+import navAtDark from "@/assets/nav-at-dark.svg";
+import navAtLight from "@/assets/nav-at-light.svg";
 
 interface NavbarProps {
   onOpenAbout: () => void;
@@ -52,7 +56,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             className={navBtnClass}
             aria-label="Menu"
           >
-            ≡
+            <img src={resolvedTheme === "light" ? navBurgerLight : navBurgerDark} alt="" className="h-5 w-5" aria-hidden />
           </button>
           {menuOpen && (
             <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
@@ -94,7 +98,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             className={navBtnClass}
             aria-label="Social links"
           >
-            @
+            <img src={resolvedTheme === "light" ? navAtLight : navAtDark} alt="" className="h-5 w-5" aria-hidden />
           </button>
           {socialOpen && (
             <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">

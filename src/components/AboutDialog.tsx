@@ -31,7 +31,7 @@ const AboutDialog = ({ open, onOpenChange }: AboutDialogProps) => {
             pairings — complete with a restaurant, day, and time already set.
           </p>
           <p>
-            Founded in 2025, Flipped is on a mission to bring back the magic of real-life
+            Founded in 2026, Flipped is on a mission to bring back the magic of real-life
             connection in an increasingly digital world.
           </p>
         </div>
