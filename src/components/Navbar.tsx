@@ -41,7 +41,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 pb-3 pt-[max(0.875rem,env(safe-area-inset-top,0px))]">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-6 pb-3 pt-[max(0.875rem,env(safe-area-inset-top,0px))] backdrop-blur-md">
       {/* Mobile layout */}
       <div className="mx-auto flex w-full items-center justify-center gap-3 md:hidden">
         <Link to="/">
