@@ -16,11 +16,11 @@ const navBtnClass =
   "inline-flex min-h-9 shrink-0 items-center justify-center px-4 leading-none rounded-lg text-xs font-mono uppercase tracking-wider text-foreground transition-colors bg-[#D5D1CC] hover:bg-[#C8C4BF] dark:bg-[#2a2a2a] dark:hover:bg-[#353535]";
 
 const socials = [
-  { label: "Instagram" },
-  { label: "LinkedIn" },
-  { label: "TikTok" },
-  { label: "X (Twitter)" },
-  { label: "YouTube" },
+  { label: "Instagram", href: "https://www.instagram.com/flippedsocial" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/flippedsocial/about/?viewAsMember=true" },
+  { label: "TikTok", href: "https://www.tiktok.com/@flippedsocial?_r=1&_t=ZT-95iIpKTEqZa" },
+  { label: "X (Twitter)", href: "https://x.com/FlippedSocial" },
+  { label: "YouTube", href: "https://www.youtube.com/@flippedsocial" },
 ];
 
 const Navbar = ({ onOpenAbout }: NavbarProps) => {
@@ -105,7 +105,9 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
               {socials.map((s) => (
                 <a
                   key={s.label}
-                  href="#"
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setSocialOpen(false)}
                   className="block border-b border-black/10 px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
                 >

@@ -23,11 +23,11 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   const isLight = resolvedTheme === "light";
 
   const socials = [
-    { label: "LinkedIn", darkSrc: linkedinDark, lightSrc: linkedinLight },
-    { label: "X", darkSrc: xDark, lightSrc: xLight },
-    { label: "YouTube", darkSrc: youtubeDark, lightSrc: youtubeLight },
-    { label: "Instagram", darkSrc: instagramDark, lightSrc: instagramLight },
-    { label: "TikTok", darkSrc: tiktokDark, lightSrc: tiktokLight },
+    { label: "LinkedIn", darkSrc: linkedinDark, lightSrc: linkedinLight, href: "https://www.linkedin.com/company/flippedsocial/about/?viewAsMember=true" },
+    { label: "X", darkSrc: xDark, lightSrc: xLight, href: "https://x.com/FlippedSocial" },
+    { label: "YouTube", darkSrc: youtubeDark, lightSrc: youtubeLight, href: "https://www.youtube.com/@flippedsocial" },
+    { label: "Instagram", darkSrc: instagramDark, lightSrc: instagramLight, href: "https://www.instagram.com/flippedsocial" },
+    { label: "TikTok", darkSrc: tiktokDark, lightSrc: tiktokLight, href: "https://www.tiktok.com/@flippedsocial?_r=1&_t=ZT-95iIpKTEqZa" },
   ];
 
   return (
@@ -56,10 +56,12 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
               </button>
             </div>
             <div className="flex flex-wrap items-center gap-4 sm:gap-5">
-              {socials.map(({ label, darkSrc, lightSrc }) => (
+              {socials.map(({ label, darkSrc, lightSrc, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target={href !== "#" ? "_blank" : undefined}
+                  rel={href !== "#" ? "noopener noreferrer" : undefined}
                   className="transition-opacity hover:opacity-70"
                   aria-label={label}
                 >
