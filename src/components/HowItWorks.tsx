@@ -1,4 +1,4 @@
-import { useTheme } from "next-themes";
+import { useTheme } from "@/context/ThemeContext";
 import stepProfile from "@/assets/step-profile.png";
 import stepSunday from "@/assets/step-sunday.png";
 import stepPick from "@/assets/step-pick.png";

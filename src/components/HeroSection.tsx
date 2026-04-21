@@ -1,5 +1,5 @@
 import { MessageCircle } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/context/ThemeContext";
 import crystalIcon from "@/assets/crystal-icon.png";
 import heroDinner from "@/assets/hero-dinner.png";
 import heroDinnerLight from "@/assets/hero-dinner-light.png";

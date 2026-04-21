@@ -13,10 +13,9 @@
     <meta property="og:type" content="website" />
     <script>
       (function() {
-        var stored = localStorage.getItem('theme');
-        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
+        var stored; try { stored = localStorage.getItem('theme'); } catch(e) {}
+        var dark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.add(dark ? 'dark' : 'light');
       })();
     </script>
   </head>

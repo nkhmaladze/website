@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/context/ThemeContext";
 import flippedLogoDark from "@/assets/flipped-logo-dark.png";
 import flippedLogoLight from "@/assets/flipped-logo-light.png";
 import navBurgerDark from "@/assets/nav-burger-dark.svg";

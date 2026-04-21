@@ -1,4 +1,4 @@
-import { useTheme } from "next-themes";
+import { useTheme } from "@/context/ThemeContext";
 import linkedinDark from "@/assets/social-linkedin-dark.svg";
 import linkedinLight from "@/assets/social-linkedin-light.svg";
 import xDark from "@/assets/social-x-dark.svg";

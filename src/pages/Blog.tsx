@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/context/ThemeContext";
 import comingSoonDark from "@/assets/coming-soon-dark.png";
 import comingSoonLight from "@/assets/coming-soon-light.png";
 
