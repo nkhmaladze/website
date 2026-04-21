@@ -13,7 +13,7 @@ interface NavbarProps {
 }
 
 const navBtnClass =
-  "inline-flex min-h-9 shrink-0 items-center justify-center px-4 leading-none rounded-lg text-xs font-mono uppercase tracking-wider text-foreground transition-colors bg-[#D5D1CC] hover:bg-[#C8C4BF] dark:bg-[#2a2a2a] dark:hover:bg-[#353535]";
+  "inline-flex min-h-9 shrink-0 items-center justify-center px-4 leading-none rounded-lg text-xs font-mono uppercase tracking-wider text-foreground transition-colors bg-secondary hover:bg-muted";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/flippedsocial" },

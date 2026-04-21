@@ -16,7 +16,7 @@ interface FooterProps {
 }
 
 const footerBtnClass =
-  "inline-flex min-h-9 items-center justify-center rounded-lg px-5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors bg-[#D5D1CC] hover:bg-[#C8C4BF] dark:bg-[#2a2a2a] dark:hover:bg-[#353535]";
+  "inline-flex min-h-9 items-center justify-center rounded-lg px-5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors bg-secondary hover:bg-muted";
 
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   const { resolvedTheme } = useTheme();
