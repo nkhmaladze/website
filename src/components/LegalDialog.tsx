@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -50,14 +51,13 @@ const LegalDialog = ({ open, onOpenChange }: LegalDialogProps) => {
                 privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard
                 your information when you use our mobile application and website.
               </p>
-              <a
-                href="/privacy-policy.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/privacy-policy"
+                onClick={() => onOpenChange(false)}
                 className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
               >
                 View full Privacy Policy →
-              </a>
+              </Link>
             </>
           ) : (
             <>
@@ -66,14 +66,13 @@ const LegalDialog = ({ open, onOpenChange }: LegalDialogProps) => {
                 by these Terms and Conditions. If you do not agree to these terms, please do not
                 use our services.
               </p>
-              <a
-                href="/terms-of-service.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/terms"
+                onClick={() => onOpenChange(false)}
                 className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity"
               >
                 View full Terms & Conditions →
-              </a>
+              </Link>
             </>
           )}
         </div>
