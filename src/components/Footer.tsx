@@ -38,7 +38,15 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
         className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
         aria-hidden
       >
-        <span className="whitespace-nowrap font-playfair xl:text-[437px] lg:text-[300px] md:text-[200px] text-[100px] font-normal leading-none text-foreground/[0.04]">
+        <span
+          className="whitespace-nowrap font-playfair xl:text-[437px] lg:text-[300px] md:text-[200px] text-[100px] font-light leading-none tracking-[-0.06em] text-transparent bg-clip-text"
+          style={{
+            backgroundImage:
+              "linear-gradient(360deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           Flipped
         </span>
       </div>
@@ -50,12 +58,12 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
           <TextureButton
             text="Legal"
             onClick={onOpenLegal}
-            className="text-xs w-[63px] relative h-[25px] shadow-[0_10px_10px_0_rgba(0,0,0,0.25)]"
+            className="!text-sm !w-[63px] !h-[25px] !px-3 !py-1 relative"
           />
           <TextureButton
             text="Contact"
             onClick={onOpenContact}
-            className="text-xs w-[63px] relative h-[25px] shadow-[0_10px_10px_0_rgba(0,0,0,0.25)]"
+            className="!text-sm !w-[63px] !h-[25px] !px-3 !py-1 relative"
           />
         </div>
         <div className="flex items-center gap-5">
@@ -65,7 +73,7 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
               href={href}
               target={href !== "#" ? "_blank" : undefined}
               rel={href !== "#" ? "noopener noreferrer" : undefined}
-              className="opacity-40 transition-opacity hover:opacity-100"
+              className="opacity-100 transition-opacity hover:opacity-70"
               aria-label={label}
             >
               <img

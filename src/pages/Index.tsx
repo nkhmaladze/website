@@ -18,19 +18,20 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${flippedBg})` }}>
-      <PageBorders />
-      
-      <div className="relative z-10 pt-12 flex flex-col">
-        <HorizontalBorder />
-        <Navbar onOpenAbout={() => setAboutOpen(true)} />
-        <HorizontalBorder />
-        
-        <HeroSection />
-        <HorizontalBorder />
-        
-        <HowItWorks />
-        <HorizontalBorder />
-        
+      <div className="relative z-10 flex flex-col">
+        <div className="relative pt-12">
+          <PageBorders />
+          <HorizontalBorder />
+          <Navbar onOpenAbout={() => setAboutOpen(true)} />
+          <HorizontalBorder />
+
+          <HeroSection />
+          <HorizontalBorder />
+
+          <HowItWorks />
+          <HorizontalBorder />
+        </div>
+
         <Footer onOpenLegal={() => setLegalOpen(true)} onOpenContact={() => setContactOpen(true)} />
         <HorizontalBorder />
       </div>
