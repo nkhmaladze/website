@@ -16,245 +16,128 @@ import stepLabel2Light from "@/assets/step-label-2-light.png";
 import stepLabel3Light from "@/assets/step-label-3-light.png";
 import stepLabel4Light from "@/assets/step-label-4-light.png";
 
-const darkSteps = [
+const steps = [
   {
     number: "1",
-    label: stepLabel1,
-    labelLight: stepLabel1Light,
+    title: "Tell us about you.",
+    description: "Your type, your vibe, your schedule, your food taste. We'll handle the rest.",
     image: stepSunday,
     imageLight: stepSundayLight,
-    imageAlt: "Filling out profile",
-    mobileFrame: "h-24 w-24 sm:h-28 sm:w-28",
-    midFrame: "h-32 w-32",
-    mobileImageClass: "scale-110",
-    midImageClass: "scale-110",
-    mobileTextClass: "",
-    midTextClass: "",
-    imgSize: "w-24 h-20 sm:w-28 sm:h-24 md:w-44 md:h-36",
-    labelMt: "",
-    imgMt: "",
+    color: "#3DE2FF",
+    imageAlt: "Profile details",
+    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(61, 226, 255, 0.7) 0%, rgba(61, 226, 255, 0) 79.29%)"
   },
   {
     number: "2",
-    label: stepLabel2,
-    labelLight: stepLabel2Light,
+    title: "Sunday, 11:59 PM.",
+    description: "Every week, a fresh set of matches — each one already comes with a location, a day, and a time.",
     image: stepProfile,
     imageLight: stepProfileLight,
-    imageAlt: "Group of people",
-    mobileFrame: "h-24 w-24 sm:h-28 sm:w-28",
-    midFrame: "h-32 w-32",
-    mobileImageClass: "scale-[1.45]",
-    midImageClass: "scale-[1.4]",
-    mobileTextClass: "translate-x-2 sm:translate-x-3",
-    midTextClass: "translate-x-3",
-    imgSize: "w-28 h-24 sm:w-32 sm:h-28 md:w-56 md:h-44",
-    labelMt: "md:-mt-10",
-    imgMt: "",
+    color: "#FFF71E",
+    imageAlt: "Weekly matches",
+    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(255, 247, 30, 0.7) 0%, rgba(255, 247, 30, 0) 79.29%)"
   },
   {
     number: "3",
-    label: stepLabel3,
-    labelLight: stepLabel3Light,
+    title: "Pick your date.",
+    description: "Send requests, get requests, adjust the time if you need to. First one you both say yes to? That's your date this week.",
     image: stepPick,
     imageLight: stepPickLight,
-    imageAlt: "Calendar with date picked",
-    mobileFrame: "h-24 w-24 sm:h-28 sm:w-28",
-    midFrame: "h-32 w-32",
-    mobileImageClass: "scale-110",
-    midImageClass: "scale-110",
-    mobileTextClass: "",
-    midTextClass: "",
-    imgSize: "w-24 h-20 sm:w-28 sm:h-24 md:w-40 md:h-36",
-    labelMt: "",
-    imgMt: "",
+    color: "#FF75EF",
+    imageAlt: "Date selection",
+    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(255, 117, 239, 0.7) 0%, rgba(255, 117, 239, 0) 79.29%)"
   },
   {
     number: "4",
-    label: stepLabel4,
-    labelLight: stepLabel4Light,
+    title: "Just show up.",
+    description: "No small talk. No \"let's grab drinks sometime.\" A real dinner date, this week, with someone actually worth meeting.",
     image: stepShowup,
     imageLight: stepShowupLight,
-    imageAlt: "Couple at restaurant",
-    mobileFrame: "h-24 w-24 sm:h-28 sm:w-28",
-    midFrame: "h-32 w-32",
-    mobileImageClass: "scale-[1.4]",
-    midImageClass: "scale-[1.35]",
-    mobileTextClass: "translate-x-2 sm:translate-x-3",
-    midTextClass: "translate-x-3",
-    imgSize: "w-28 h-24 sm:w-32 sm:h-28 md:w-56 md:h-44",
-    labelMt: "md:-mt-6",
-    imgMt: "md:mt-6",
+    color: "#63FF63",
+    imageAlt: "Dinner date",
+    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(99, 255, 99, 0.7) 0%, rgba(99, 255, 99, 0) 79.29%)"
   },
 ];
+
+const ScribbleCircle = ({
+  number,
+  color,
+}: {
+  number: string;
+  color: string;
+}) => (
+  <div className="relative  shrink-0">
+    <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path opacity="0.7" d="M14 36C12.0522 36 10.2261 35.5453 8.52174 34.636C6.81739 33.6942 5.31594 32.4114 4.01739 30.7876C2.75942 29.1637 1.76522 27.2639 1.03478 25.088C0.344927 22.8796 0 20.5088 0 17.9756C0 15.4425 0.344927 13.088 1.03478 10.912C1.76522 8.73613 2.75942 6.83627 4.01739 5.21245C5.31594 3.55616 6.81739 2.27334 8.52174 1.36401C10.2261 0.454668 12.0522 0 14 0C15.9478 0 17.7536 0.454668 19.4174 1.36401C21.1217 2.27334 22.6232 3.55616 23.9217 5.21245C25.2203 6.83627 26.2145 8.73613 26.9043 10.912C27.6348 13.088 28 15.4425 28 17.9756C28 20.5088 27.6348 22.8796 26.9043 25.088C26.2145 27.2639 25.2203 29.1637 23.9217 30.7876C22.6232 32.4114 21.1217 33.6942 19.4174 34.636C17.7536 35.5453 15.9478 36 14 36ZM14 32.6847C16.8812 32.6847 19.1333 31.3045 20.7565 28.544C22.3797 25.7835 26.1913 23.594 26.1913 17.9756C26.1913 12.3572 22.3797 10.184 20.7565 7.45602C19.1333 4.69553 16.8812 3.31529 14 3.31529C11.1594 3.31529 8.90725 4.69553 7.24348 7.45602C5.62029 10.184 1.8087 12.3572 1.8087 17.9756C1.8087 23.594 5.62029 25.7835 7.24348 28.544C8.90725 31.3045 11.1594 32.6847 14 32.6847Z" fill="white" />
+    </svg>
+
+
+    <span
+      className="absolute left-1/2 top-1/2 z-10 font-instrument text-xl font-semibold -translate-x-1/2 -translate-y-1/2"
+      style={{ color }}
+    >
+      {number}
+    </span>
+  </div>
+);
 
 const HowItWorks = () => {
   const { resolvedTheme } = useTheme();
   const isLight = resolvedTheme === "light";
 
   return (
-    <section className="flex min-h-[100svh] flex-col items-center px-5 py-20 md:min-h-screen md:justify-center md:px-6 md:py-10">
-      <h2 className="mb-8 text-center font-heading text-3xl font-medium sm:text-4xl md:mb-10 md:text-5xl">
-        How it works.
+    <section className="flex min-h-[80dvh] flex-col items-center px-5 py-12 sm:py-24 md:min-h-screen md:justify-center md:px-6">
+      <h2 className="mb-16 text-center font-instrument text-5xl font-medium sm:text-6xl md:mb-24 md:text-7xl">
+        How it{" "}
+        <span className="bg-gradient-to-tr from-foreground from-30% via-[#B6F09C] to-[#48C78E] bg-clip-text text-transparent">
+          works.
+        </span>
       </h2>
 
-      <div className="mx-auto flex w-full max-w-sm flex-col gap-8 sm:max-w-md md:hidden">
-        {darkSteps.map((step, index) => {
-          const isEven = index % 2 === 0;
-          const labelSrc = isLight ? step.labelLight : step.label;
-          const imageSrc = isLight ? step.imageLight : step.image;
-          const mobileRowClass = isEven
-            ? "grid-cols-[minmax(0,1fr)_6.5rem]"
-            : "grid-cols-[6.5rem_minmax(0,1fr)]";
-
-          return (
-            <div
-              key={step.number}
-              className={`grid items-center gap-x-3 gap-y-2 ${mobileRowClass}`}
-            >
-              {isEven ? (
-                <>
-                  <img
-                    src={labelSrc}
-                    alt={`Step ${step.number}`}
-                    className={`h-auto w-full max-w-[16rem] justify-self-start object-contain ${step.mobileTextClass}`}
-                  />
-                  <div className="flex justify-self-end">
-                    <div className={`flex items-center justify-center ${step.mobileFrame}`}>
-                      <img
-                        src={imageSrc}
-                        alt={step.imageAlt}
-                        className={`max-h-full max-w-full origin-center object-contain opacity-90 ${step.mobileImageClass}`}
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                      />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex justify-self-start">
-                    <div className={`flex items-center justify-center ${step.mobileFrame}`}>
-                      <img
-                        src={imageSrc}
-                        alt={step.imageAlt}
-                        className={`max-h-full max-w-full origin-center object-contain opacity-90 ${step.mobileImageClass}`}
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                      />
-                    </div>
-                  </div>
-                  <img
-                    src={labelSrc}
-                    alt={`Step ${step.number}`}
-                    className={`h-auto w-full max-w-[16rem] justify-self-start object-contain ${step.mobileTextClass}`}
-                  />
-                </>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="mx-auto hidden w-full max-w-md flex-col gap-7 md:max-lg:flex">
-        {darkSteps.map((step, index) => {
-          const isEven = index % 2 === 0;
-          const labelSrc = isLight ? step.labelLight : step.label;
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 md:px-16">
+        {steps.map((step, index) => {
+          const isEven = index % 2 === 1;
           const imageSrc = isLight ? step.imageLight : step.image;
 
           return (
             <div
               key={step.number}
-              className={`grid items-center gap-x-5 ${isEven ? "grid-cols-[minmax(0,1fr)_9rem]" : "grid-cols-[9rem_minmax(0,1fr)]"}`}
+              className={`flex flex-col gap-12 md:flex-row items-center ${isEven ? "md:flex-row-reverse" : ""}`}
             >
-              {isEven ? (
-                <>
-                  <img
-                    src={labelSrc}
-                    alt={`Step ${step.number}`}
-                    className={`h-auto w-full max-w-[18rem] object-contain ${step.midTextClass}`}
-                  />
-                  <div className="flex justify-self-end">
-                    <div className={`flex items-center justify-center ${step.midFrame}`}>
-                      <img
-                        src={imageSrc}
-                        alt={step.imageAlt}
-                        className={`max-h-full max-w-full origin-center object-contain opacity-90 ${step.midImageClass}`}
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                      />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex justify-self-start">
-                    <div className={`flex items-center justify-center ${step.midFrame}`}>
-                      <img
-                        src={imageSrc}
-                        alt={step.imageAlt}
-                        className={`max-h-full max-w-full origin-center object-contain opacity-90 ${step.midImageClass}`}
-                        loading="lazy"
-                        width={512}
-                        height={512}
-                      />
-                    </div>
-                  </div>
-                  <img
-                    src={labelSrc}
-                    alt={`Step ${step.number}`}
-                    className={`h-auto w-full max-w-[18rem] object-contain ${step.midTextClass}`}
-                  />
-                </>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="mx-auto hidden w-full max-w-[56rem] flex-col gap-6 lg:flex xl:max-w-[60rem]">
-        {darkSteps.map((step, index) => {
-          const isEven = index % 2 === 0;
-          const labelSrc = isLight ? step.labelLight : step.label;
-          const imageSrc = isLight ? step.imageLight : step.image;
-
-          const imageEl = (
-            <div
-              className={`flex flex-shrink-0 justify-center ${step.imgMt}`}
-            >
-              <div className={step.imgSize}>
-                <img
-                  src={imageSrc}
-                  alt={step.imageAlt}
-                  className="max-h-full max-w-full object-contain opacity-90"
-                  loading="lazy"
-                  width={512}
-                  height={512}
-                />
+              {/* Text Content */}
+              <div className="flex flex-1 flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <ScribbleCircle number={step.number} color={step.color} />
+                  <h3
+                    className="font-instrument text-2xl md:text-3xl"
+                    style={{
+                      backgroundImage: step.gradient,
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                      color: "transparent",
+                      display: "inline-block"
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="sm:max-w-sm max-w-[250px] pl-[45px] font-anonymous  text-foreground/70 sm:text-sm text-xs">
+                  {step.description}
+                </p>
               </div>
-            </div>
-          );
 
-          const textEl = (
-            <div
-              className={`flex min-w-0 flex-shrink-0 items-start ${step.labelMt} ${isEven ? "justify-self-start" : "justify-self-end lg:translate-x-4 xl:translate-x-6"}`}
-            >
-              <img
-                src={labelSrc}
-                alt={`Step ${step.number}`}
-                className="h-auto w-64 max-w-full object-contain xl:w-72"
-              />
-            </div>
-          );
+              {/* Image Content */}
+              <div className="flex flex-1 justify-center">
+                <div className="relative">
+                  <img
+                    src={imageSrc}
+                    alt={step.imageAlt}
+                    className="h-auto w-full max-w-[280px] object-contain opacity-90 md:max-w-[400px]"
+                    loading="lazy"
+                  />
 
-          return (
-            <div
-              key={step.number}
-              className={`mx-auto grid items-center justify-center gap-x-8 xl:gap-x-10 ${isEven ? "grid-cols-[18rem_13rem] xl:grid-cols-[20rem_14rem]" : "grid-cols-[13rem_18rem] xl:grid-cols-[14rem_20rem]"}`}
-            >
-              {isEven ? <>{textEl}{imageEl}</> : <>{imageEl}{textEl}</>}
+                </div>
+              </div>
             </div>
           );
         })}

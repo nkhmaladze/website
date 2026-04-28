@@ -1,19 +1,30 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
-import flippedLogoDark from "@/assets/flipped-logo-dark.png";
+import flippedLogoDark from "@/assets/Flipped-navbar-logo.png";
 import flippedLogoLight from "@/assets/flipped-logo-light.png";
 import navBurgerDark from "@/assets/nav-burger-dark.svg";
 import navBurgerLight from "@/assets/nav-burger-light.svg";
 import navAtDark from "@/assets/nav-at-dark.svg";
 import navAtLight from "@/assets/nav-at-light.svg";
+import navVector from '@/assets/nav-Vector.svg'
+import flippedBg from "@/assets/btn-bg.png";
+import TextureButton from "./ui/texture-btn";
 
 interface NavbarProps {
   onOpenAbout: () => void;
 }
 
 const navBtnClass =
-  "inline-flex min-h-9 shrink-0 items-center justify-center px-4 leading-none rounded-lg text-xs font-mono uppercase tracking-wider text-foreground transition-colors bg-secondary hover:bg-muted";
+  "inline-flex items-center w-[115px] relative h-[46px] justify-center px-8 py-[13px] " +
+  "rounded-[6px] border border-[#252525] text-base font-anonymous uppercase tracking-wider text-[#F9F7EE] " +
+  "transition-all duration-200 active:scale-[0.985] " +
+  "bg-[#252525] " +
+  "hover:bg-[#282828] " +
+  // Subtle white inner highlight
+  "shadow-[inset_0_0.2px_0px_0_rgba(255,255,255,0.3)] " +
+  // Outer drop shadow
+  "shadow-[0_6px_10px_0_rgba(0,0,0,0.25)]";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/flippedsocial" },
@@ -41,23 +52,30 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 pb-3 pt-[max(0.875rem,env(safe-area-inset-top,0px))] backdrop-blur-md">
+    <nav className="relative  max-w-maxw mx-auto w-full z-50 px-6 py-1">
       {/* Mobile layout */}
       <div className="mx-auto flex w-full items-center justify-center gap-3 md:hidden">
-        <Link to="/">
-          <img src={logoSrc} alt="Flipped" className="h-10 w-10 shrink-0 rounded-xl" />
+
+
+        <Link
+          to="/"
+        >
+          <TextureButton
+            className="!w-[50px]"
+            src={navVector}
+          />
+
         </Link>
 
         {/* Hamburger menu */}
         <div ref={menuRef} className="relative">
-          <button
-            type="button"
+         
+
+          <TextureButton
+            className="!w-[50px]"
             onClick={() => { setMenuOpen(o => !o); setSocialOpen(false); }}
-            className={navBtnClass}
-            aria-label="Menu"
-          >
-            <img src={resolvedTheme === "light" ? navBurgerLight : navBurgerDark} alt="" className="h-5 w-5" aria-hidden />
-          </button>
+            src={resolvedTheme === "light" ? navBurgerLight : navBurgerDark}
+          />
           {menuOpen && (
             <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
               {[
@@ -92,14 +110,13 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
 
         {/* Social menu */}
         <div ref={socialRef} className="relative">
-          <button
-            type="button"
+          
+
+           <TextureButton
+            className="!w-[50px]"
             onClick={() => { setSocialOpen(o => !o); setMenuOpen(false); }}
-            className={navBtnClass}
-            aria-label="Social links"
-          >
-            <img src={resolvedTheme === "light" ? navAtLight : navAtDark} alt="" className="h-5 w-5" aria-hidden />
-          </button>
+            src={resolvedTheme === "light" ? navAtLight : navAtDark}
+          />
           {socialOpen && (
             <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
               {socials.map((s) => (
@@ -121,31 +138,44 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
 
       {/* Desktop layout */}
       <div className="relative hidden w-full md:block">
-        <Link
-          to="/"
-          className="absolute left-0 top-1/2 z-10 -translate-y-1/2 font-heading text-lg italic text-foreground md:text-xl"
-        >
-          Flipped
+
+        <Link to="/">
+          <h1 className="absolute left-0 top-1/2 z-10 -translate-y-1/2  font-playfair text-xl italic tracking-widest text-[#FFFFFF2A]  md:text-[32px]">Flipped</h1>
         </Link>
         <div className="flex justify-center px-20 sm:px-24 md:px-28">
           <div className="grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-2 md:max-w-2xl md:gap-x-3">
             <div className="flex items-center justify-end gap-2 md:gap-3">
-              <button type="button" onClick={onOpenAbout} className={navBtnClass}>
-                About
-              </button>
-              <Link to="/blog" className={navBtnClass}>
-                Blog
+
+              <TextureButton
+                text="About"
+                onClick={onOpenAbout}
+              />
+              <Link to="/blog" >
+                <TextureButton
+                  text="Blog"
+                />
               </Link>
             </div>
-            <Link to="/" className="inline-flex shrink-0 items-center justify-center justify-self-center">
-              <img src={logoSrc} alt="Flipped" className="h-10 w-10 shrink-0 rounded-xl" />
+            {/* Middle Logo */}
+            <Link
+              to="/"
+            >
+              <TextureButton
+                className="!w-[50px]"
+                src={navVector}
+              />
+
             </Link>
             <div className="flex items-center justify-start gap-2 md:gap-3">
-              <a href="#" className={navBtnClass}>
-                Download
+              <a href="#">
+                <TextureButton
+                  text="Download"
+                />
               </a>
-              <Link to="/events" className={navBtnClass}>
-                Events
+              <Link to="/events">
+                <TextureButton
+                  text="Events"
+                />
               </Link>
             </div>
           </div>

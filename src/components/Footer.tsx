@@ -9,6 +9,7 @@ import instagramDark from "@/assets/social-instagram-dark.svg";
 import instagramLight from "@/assets/social-instagram-light.svg";
 import tiktokDark from "@/assets/social-tiktok-dark.svg";
 import tiktokLight from "@/assets/social-tiktok-light.svg";
+import TextureButton from "./ui/texture-btn";
 
 interface FooterProps {
   onOpenLegal: () => void;
@@ -16,7 +17,7 @@ interface FooterProps {
 }
 
 const footerBtnClass =
-  "inline-flex min-h-9 items-center justify-center rounded-lg px-5 font-mono text-xs uppercase tracking-wider text-foreground transition-colors bg-secondary hover:bg-muted";
+  "inline-flex h-7 items-center justify-center rounded-[4px] border border-[#252525] bg-[#FFFFFF0D] px-4 font-anonymous text-[10px] uppercase tracking-widest text-[#F9F7EE] shadow-[inset_0_0.2px_0_0_rgba(255,255,255,0.2)] hover:bg-[#FFFFFF1A] transition-colors";
 
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   const { resolvedTheme } = useTheme();
@@ -31,51 +32,58 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   ];
 
   return (
-    <footer className="relative flex min-h-[220px] flex-col justify-end overflow-hidden px-6 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-10 md:h-[25vh] md:min-h-0 md:pb-8 md:pt-0">
+    <footer className="relative flex min-h-[300px] mb-0  flex-col justify-center overflow-hidden px-10  pt-20 md:min-h-[450px]">
+      {/* Background Large Text */}
       <div
-        className="pointer-events-none absolute inset-0 hidden items-center justify-center select-none sm:flex"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
         aria-hidden
       >
-        <span className="whitespace-nowrap font-heading text-[clamp(2.5rem,16vh,10rem)] font-bold italic text-foreground/[0.07]">
+        <span className="whitespace-nowrap font-playfair xl:text-[437px] lg:text-[300px] md:text-[200px] text-[100px] font-normal leading-none text-foreground/[0.04]">
           Flipped
         </span>
       </div>
 
-      <div className="relative w-full">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-5">
-          <p className="order-2 font-mono text-xs text-muted-foreground/80 sm:order-1">
-            © 2026 Flipped Social, Inc.
-          </p>
-          <div className="order-1 flex flex-col items-start gap-3 sm:order-2 sm:items-end">
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              <button type="button" onClick={onOpenLegal} className={footerBtnClass}>
-                Legal
-              </button>
-              <button type="button" onClick={onOpenContact} className={footerBtnClass}>
-                Contact
-              </button>
-            </div>
-            <div className="flex flex-wrap items-center gap-4 sm:gap-5">
-              {socials.map(({ label, darkSrc, lightSrc, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href !== "#" ? "_blank" : undefined}
-                  rel={href !== "#" ? "noopener noreferrer" : undefined}
-                  className="transition-opacity hover:opacity-70"
-                  aria-label={label}
-                >
-                  <img
-                    src={isLight ? lightSrc : darkSrc}
-                    alt={label}
-                    className="h-5 w-5 object-contain"
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
+
+      <div className="mb-12 absolute top-4 right-24 flex flex-col items-center justify-center gap-6 sm:flex-row sm:justify-end sm:gap-8">
+        <div className="flex gap-2">
+          
+          <TextureButton
+            text="Legal"
+            onClick={onOpenLegal}
+            className="text-xs w-[63px] relative h-[25px] shadow-[0_10px_10px_0_rgba(0,0,0,0.25)]"
+          />
+          <TextureButton
+            text="Contact"
+            onClick={onOpenContact}
+            className="text-xs w-[63px] relative h-[25px] shadow-[0_10px_10px_0_rgba(0,0,0,0.25)]"
+          />
+        </div>
+        <div className="flex items-center gap-5">
+          {socials.map(({ label, darkSrc, lightSrc, href }) => (
+            <a
+              key={label}
+              href={href}
+              target={href !== "#" ? "_blank" : undefined}
+              rel={href !== "#" ? "noopener noreferrer" : undefined}
+              className="opacity-40 transition-opacity hover:opacity-100"
+              aria-label={label}
+            >
+              <img
+                src={isLight ? lightSrc : darkSrc}
+                alt={label}
+                className="h-6 w-6 object-contain invert dark:invert-0"
+              />
+            </a>
+          ))}
         </div>
       </div>
+
+      <div className="bottom-6 absolute left-20 flex justify-start">
+        <p className="font-anonymous text-[10px] uppercase tracking-widest text-[#FFFFFF80]">
+          © 2026 Flipped Social, Inc.
+        </p>
+      </div>
+
     </footer>
   );
 };
