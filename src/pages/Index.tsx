@@ -18,7 +18,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${flippedBg})` }}>
-      <div className="relative z-10 flex flex-col">
+      <div className="relative z-10 flex max-w-[1900px] w-full mx-auto flex-col">
         <div className="relative pt-12">
           <PageBorders />
           <HorizontalBorder />
@@ -32,8 +32,8 @@ const Index = () => {
           <HorizontalBorder />
         </div>
 
+        <PageBorders showInnerBorder={false} />
         <Footer onOpenLegal={() => setLegalOpen(true)} onOpenContact={() => setContactOpen(true)} />
-        <HorizontalBorder />
       </div>
 
       <AboutDialog open={aboutOpen} onOpenChange={setAboutOpen} />

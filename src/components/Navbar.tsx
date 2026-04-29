@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/context/ThemeContext";
 import flippedLogoDark from "@/assets/Flipped-navbar-logo.png";
@@ -10,21 +10,12 @@ import navAtLight from "@/assets/nav-at-light.svg";
 import navVector from '@/assets/nav-Vector.svg'
 import flippedBg from "@/assets/btn-bg.png";
 import TextureButton from "./ui/texture-btn";
+import { Flippedicon } from "@/svgs";
 
 interface NavbarProps {
   onOpenAbout: () => void;
 }
 
-const navBtnClass =
-  "inline-flex items-center w-[115px] relative h-[46px] justify-center px-8 py-[13px] " +
-  "rounded-[6px] border border-[#252525] text-base font-anonymous uppercase tracking-wider text-[#F9F7EE] " +
-  "transition-all duration-200 active:scale-[0.985] " +
-  "bg-[#252525] " +
-  "hover:bg-[#282828] " +
-  // Subtle white inner highlight
-  "shadow-[inset_0_0.2px_0px_0_rgba(255,255,255,0.3)] " +
-  // Outer drop shadow
-  "shadow-[0_6px_10px_0_rgba(0,0,0,0.25)]";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/flippedsocial" },
@@ -38,102 +29,101 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
   const { resolvedTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const socialRef = useRef<HTMLDivElement>(null);
-  const logoSrc = resolvedTheme === "light" ? flippedLogoLight : flippedLogoDark;
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
-      if (socialRef.current && !socialRef.current.contains(e.target as Node)) setSocialOpen(false);
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+        setSocialOpen(false);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   return (
-    <nav className="relative  max-w-maxw mx-auto w-full z-50 px-6 py-1">
+    <nav className="relative  3xl:max-w-[1650px] max-w-[1350px] mx-auto w-full z-50 px-6 py-1">
       {/* Mobile layout */}
-      <div className="mx-auto flex w-full items-center justify-center gap-3 md:hidden">
-
-
-        <Link
-          to="/"
-        >
+      <div ref={containerRef} className="relative mx-auto flex w-full items-center justify-center gap-3 md:hidden">
+        <Link to="/">
           <TextureButton
             className="!w-[50px]"
-            src={navVector}
+            icon={<Flippedicon className="h-[34px] w-[34px]" />}
           />
-
         </Link>
 
-        {/* Hamburger menu */}
-        <div ref={menuRef} className="relative">
-         
+        {/* Hamburger menu trigger */}
+        <TextureButton
+          className="!w-[50px]"
+          onClick={() => { setMenuOpen(o => !o); setSocialOpen(false); }}
+          src={resolvedTheme === "light" ? navBurgerLight : navBurgerDark}
+        />
 
-          <TextureButton
-            className="!w-[50px]"
-            onClick={() => { setMenuOpen(o => !o); setSocialOpen(false); }}
-            src={resolvedTheme === "light" ? navBurgerLight : navBurgerDark}
-          />
-          {menuOpen && (
-            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
+        {/* Social menu trigger */}
+        <TextureButton
+          className="!w-[50px]"
+          onClick={() => { setSocialOpen(o => !o); setMenuOpen(false); }}
+          src={resolvedTheme === "light" ? navAtLight : navAtDark}
+        />
+
+        {/* Unified Popups Positioned relative to the row center */}
+        {menuOpen && (
+          <div className="absolute left-1/2 top-full mt-2 w-44 px-4 -translate-x-1/2 rounded-lg bg-[#1E1E1E] py-1 shadow-lg dark:bg-[#2a2a2a] overflow-hidden z-50">
+            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 z-0 pointer-events-none" style={{ backgroundImage: `url(${flippedBg})` }} />
+            <div className="relative z-10 ">
               {[
                 { label: "About", action: () => { onOpenAbout(); setMenuOpen(false); } },
                 { label: "Blog", href: "/blog" },
                 { label: "Download", href: "#" },
                 { label: "Events", href: "/events" },
-              ].map((item) =>
-                item.href ? (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="block border-b border-black/10 px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={item.label}
-                    type="button"
-                    onClick={item.action}
-                    className="block w-full border-b border-black/10 px-5 py-3 text-left font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
-                  >
-                    {item.label}
-                  </button>
-                )
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* Social menu */}
-        <div ref={socialRef} className="relative">
-          
-
-           <TextureButton
-            className="!w-[50px]"
-            onClick={() => { setSocialOpen(o => !o); setMenuOpen(false); }}
-            src={resolvedTheme === "light" ? navAtLight : navAtDark}
-          />
-          {socialOpen && (
-            <div className="absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-lg bg-[#D5D1CC] py-1 shadow-lg dark:bg-[#2a2a2a]">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setSocialOpen(false)}
-                  className="block border-b border-black/10 px-5 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-[#C8C4BF] last:border-0 dark:border-white/10 dark:hover:bg-[#353535]"
-                >
-                  {s.label}
-                </a>
+              ].map((item, index, array) => (
+                <React.Fragment key={item.label}>
+                  {item.href ? (
+                    <Link
+                      to={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block py-2 px-3 my-1.5 font-anonymous font-bold uppercase tracking-wider text-white hover:bg-[#C8C4BF1A] dark:hover:bg-[#353535] transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={item.action}
+                      className="block w-full py-2 px-3 my-1.5 text-left font-bold font-anonymous uppercase tracking-wider text-white hover:bg-[#C8C4BF1A] dark:hover:bg-[#353535] transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  )}
+                  {index < array.length - 1 && <div className="nav-divider" />}
+                </React.Fragment>
               ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
+
+        {socialOpen && (
+          <div className="absolute left-1/2 top-full mt-2 w-44 px-4 -translate-x-1/2 rounded-lg bg-[#1E1E1E] py-1 shadow-lg dark:bg-[#2a2a2a] overflow-hidden z-50">
+            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 z-0 pointer-events-none" style={{ backgroundImage: `url(${flippedBg})` }} />
+            <div className="relative z-10">
+              {socials.map((s, index, array) => (
+                <React.Fragment key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setSocialOpen(false)}
+                    className="block py-2 px-3 my-1.5  font-anonymous font-bold uppercase tracking-wider text-white hover:bg-[#C8C4BF1A] dark:hover:bg-[#353535] transition-colors"
+                  >
+                    {s.label}
+                  </a>
+                  {index < array.length - 1 && <div className="nav-divider" />}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Desktop layout */}
@@ -162,7 +152,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             >
               <TextureButton
                 className="!w-[50px]"
-                src={navVector}
+                icon={<Flippedicon className="h-[34px] w-[34px]" />}
               />
 
             </Link>

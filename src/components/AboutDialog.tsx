@@ -30,9 +30,18 @@ const AboutDialog = ({ open, onOpenChange }: AboutDialogProps) => {
           </DialogTitle>
           <DialogClose
             aria-label="Close"
-            className="grid h-[44px] w-[44px] place-items-center rounded-[5px] text-white opacity-90 transition-opacity hover:opacity-100 focus:outline-none"
+            className="group relative grid h-[44px] w-[44px] place-items-center rounded-[6px] text-white opacity-90 transition-all hover:opacity-100 focus:outline-none"
           >
-            <X className="h-6 w-6" strokeWidth={1.5} />
+            {/* Gradient Background on Hover */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-all duration-300"
+              style={{
+                background: "linear-gradient(90deg, rgba(198, 141, 214, 0.4) 46.63%, rgba(255, 122, 125, 0.4) 100%)",
+                borderRadius: "8px",
+                backdropFilter: "blur(80px)",
+              }}
+            />
+            <X className="relative z-10 h-6 w-6" strokeWidth={1.5} />
             <span className="sr-only">Close</span>
           </DialogClose>
         </div>

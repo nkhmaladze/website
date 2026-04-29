@@ -3,59 +3,79 @@ import stepProfile from "@/assets/step-profile.png";
 import stepSunday from "@/assets/step-sunday.png";
 import stepPick from "@/assets/step-pick.png";
 import stepShowup from "@/assets/step-showup.png";
-import stepLabel1 from "@/assets/step-label-1.png";
-import stepLabel2 from "@/assets/step-label-2.png";
-import stepLabel3 from "@/assets/step-label-3.png";
-import stepLabel4 from "@/assets/step-label-4.png";
 import stepProfileLight from "@/assets/step-profile-light.png";
 import stepSundayLight from "@/assets/step-sunday-light.png";
 import stepPickLight from "@/assets/step-pick-light.png";
 import stepShowupLight from "@/assets/step-showup-light.png";
-import stepLabel1Light from "@/assets/step-label-1-light.png";
-import stepLabel2Light from "@/assets/step-label-2-light.png";
-import stepLabel3Light from "@/assets/step-label-3-light.png";
-import stepLabel4Light from "@/assets/step-label-4-light.png";
+import commentIcon from "@/assets/comment-icon.svg";
+import { Link } from "react-router-dom";
+
 
 const steps = [
   {
     number: "1",
     title: "Tell us about you.",
-    description: "Your type, your vibe, your schedule, your food taste. We'll handle the rest.",
+    description:
+      "Your type, your vibe, your schedule, your food taste. We'll handle the rest.",
     image: stepSunday,
     imageLight: stepSundayLight,
     color: "#3DE2FF",
     imageAlt: "Profile details",
-    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(61, 226, 255, 0.7) 0%, rgba(61, 226, 255, 0) 79.29%)"
+    gradient:
+      "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(61, 226, 255, 0.7) 0%, rgba(61, 226, 255, 0) 79.29%)",
+    imageClass:
+      "w-[180px] md:w-[280px] h-auto ",
   },
+
   {
     number: "2",
     title: "Sunday, 11:59 PM.",
-    description: "Every week, a fresh set of matches — each one already comes with a location, a day, and a time.",
+    description:
+      "Every week, a fresh set of matches — each one already comes with a location, a day, and a time.",
     image: stepProfile,
     imageLight: stepProfileLight,
     color: "#FFF71E",
     imageAlt: "Weekly matches",
-    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(255, 247, 30, 0.7) 0%, rgba(255, 247, 30, 0) 79.29%)"
+    gradient:
+      "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(255, 247, 30, 0.7) 0%, rgba(255, 247, 30, 0) 79.29%)",
+
+    // custom size for image 2
+    imageClass:
+      "w-[210px] md:w-[290px] h-auto",
   },
+
   {
     number: "3",
     title: "Pick your date.",
-    description: "Send requests, get requests, adjust the time if you need to. First one you both say yes to? That's your date this week.",
+    description:
+      "Send requests, get requests, adjust the time if you need to. First one you both say yes to? That's your date this week.",
     image: stepPick,
     imageLight: stepPickLight,
     color: "#FF75EF",
     imageAlt: "Date selection",
-    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(255, 117, 239, 0.7) 0%, rgba(255, 117, 239, 0) 79.29%)"
+    gradient:
+      "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(255, 117, 239, 0.7) 0%, rgba(255, 117, 239, 0) 79.29%)",
+
+    // custom size for image 3
+    imageClass:
+      "w-[130px] md:w-[190px] h-auto",
   },
+
   {
     number: "4",
     title: "Just show up.",
-    description: "No small talk. No \"let's grab drinks sometime.\" A real dinner date, this week, with someone actually worth meeting.",
+    description:
+      'No small talk. No "let\'s grab drinks sometime." A real dinner date, this week, with someone actually worth meeting.',
     image: stepShowup,
     imageLight: stepShowupLight,
     color: "#63FF63",
     imageAlt: "Dinner date",
-    gradient: "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(99, 255, 99, 0.7) 0%, rgba(99, 255, 99, 0) 79.29%)"
+    gradient:
+      "linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), linear-gradient(90deg, rgba(99, 255, 99, 0.7) 0%, rgba(99, 255, 99, 0) 79.29%)",
+
+    // custom size for image 4
+    imageClass:
+      "w-[200px] md:w-[320px] h-auto",
   },
 ];
 
@@ -132,7 +152,7 @@ const HowItWorks = () => {
                   <img
                     src={imageSrc}
                     alt={step.imageAlt}
-                    className="h-auto w-full max-w-[280px] object-contain opacity-90 md:max-w-[400px]"
+                    className={`${step.imageClass} object-contain opacity-90`}
                     loading="lazy"
                   />
 
@@ -141,6 +161,43 @@ const HowItWorks = () => {
             </div>
           );
         })}
+      </div>
+
+      <div className="sm:hidden block" >
+        <Link
+          to="https://forms.gle/6LvmBuAWfoPRm87v5"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-12 relative inline-flex items-center justify-center rounded-[12px] border border-[#FFFFFF4D] w-[195px] h-[52px] sm:p-[4px] p-[2px] overflow-hidden"
+        >
+          {/* Inner Button */}
+          <div
+            className="relative flex h-full w-full items-center justify-center gap-4 font-bold rounded-[8px] 
+                       border border-[#C2C4B9] bg-[#E8E5E1] px-4 py-2 font-anonymous uppercase text-[#1E1E1E] 
+                       group-hover:border-transparent transition-all duration-300 overflow-hidden"
+            style={{
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 1px 1px 2px rgba(255, 255, 255, 0.8)",
+            }}
+          >
+            {/* Gradient Background on Hover */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
+              style={{
+                background: "linear-gradient(90deg, rgba(198, 141, 214, 0.4) 46.63%, rgba(255, 122, 125, 0.4) 100%)",
+                borderRadius: "8px",
+                backdropFilter: "blur(80px)",
+              }}
+            />
+
+            {/* Button Content */}
+            <div className="relative z-10 flex items-center gap-4 transition-colors duration-300 ">
+              I want in
+              <div className="relative">
+                <img src={commentIcon} className="h-4 w-4" alt="" />
+              </div>
+            </div>
+          </div>
+        </Link>
       </div>
     </section>
   );

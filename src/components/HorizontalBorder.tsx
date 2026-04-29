@@ -7,7 +7,7 @@ const HorizontalBorder = () => {
 
   return (
     <div 
-      className="w-full h-[1px]"  
+      className="w-screen relative left-1/2 -translate-x-1/2 h-[1px]"  
       style={{
         backgroundImage: `repeating-linear-gradient(
           to right,

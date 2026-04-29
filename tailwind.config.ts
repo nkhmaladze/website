@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      screens: {
+        "2xl": "1400px",
+        "3xl": "1700px",
+      },
       maxWidth: {
         maxw: "1750px",
       },
