@@ -20,7 +20,7 @@ const HeroSection = () => {
           />
           <img src={crystalLight}
             alt=""
-            className="animate-light-sweep absolute top-[40%] right-10 w-[90%] max-w-[500px] opacity-0 mix-blend-screen pointer-events-none"
+            className="animate-light-sweep absolute top-[30%] right-10 w-[90%] max-w-[500px] opacity-0 mix-blend-screen pointer-events-none"
           />
         </div>
         <img

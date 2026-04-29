@@ -122,7 +122,7 @@
 
 @keyframes lightSweep {
   0% {
-    transform: rotate(-70deg);
+    transform: rotate(-60deg);
     opacity: 0;
   }
 
@@ -131,7 +131,7 @@
   }
 
   50% {
-    transform: rotate(70deg);
+    transform: rotate(60deg);
     opacity: 1;
   }
 
@@ -140,7 +140,7 @@
   }
 
   100% {
-    transform: rotate(-70deg);
+    transform: rotate(-60deg);
     opacity: 0;
   }
 }
