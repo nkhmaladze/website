@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/website/favicon.png" />
+    <title>Flipped</title>
+    <meta name="description" content="One dinner date. Every week." />
+    <meta name="author" content="Flipped Social" />
+
+    <meta property="og:title" content="Flipped" />
+    <meta property="og:description" content="One dinner date. Every week." />
+    <meta property="og:type" content="website" />
+    <script>
+      (function() {
+        var stored; try { stored = localStorage.getItem('theme'); } catch(e) {}
+        var dark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.add(dark ? 'dark' : 'light');
+      })();
+    </script>
+    <script type="module" crossorigin src="/website/assets/index-BQ1iZbHw.js"></script>
+    <link rel="stylesheet" crossorigin href="/website/assets/index-BmKBKaDu.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
