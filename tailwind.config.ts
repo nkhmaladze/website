@@ -13,10 +13,20 @@ export default {
       },
     },
     extend: {
+      screens: {
+        "2xl": "1400px",
+        "3xl": "1700px",
+      },
+      maxWidth: {
+        maxw: "1750px",
+      },
       fontFamily: {
         heading: ["Playfair Display", "serif"],
+        playfair: ["Playfair Display", "serif"],
         body: ["Inter", "sans-serif"],
-        mono: ["Space Mono", "monospace"],
+        mono: ["Anonymous Pro", "Space Mono", "monospace"],
+        anonymous: ["Anonymous Pro", "monospace"],
+        instrument: ["Instrument Serif", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
