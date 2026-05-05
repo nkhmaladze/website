@@ -113,6 +113,8 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    width: 100dvw !important;
+    overflow-x: hidden !important;
   }
 
   h1,

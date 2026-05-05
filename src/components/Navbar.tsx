@@ -44,7 +44,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
   }, []);
 
   return (
-    <nav className="relative  3xl:max-w-[1650px] max-w-[1550px] mx-auto w-full z-50 px-6 py-1">
+    <nav className="relative  3xl:max-w-[1650px] max-w-[1450px] mx-auto w-full z-50 px-6 py-1">
       {/* Mobile layout */}
       <div ref={containerRef} className="relative mx-auto flex w-full items-center justify-center gap-3 md:hidden">
         <Link to="/">

@@ -81,7 +81,7 @@ const ContactDialog = ({ open, onOpenChange }: ContactDialogProps) => {
         />
 
         {/* Scrollable Content */}
-        <div className="max-h-[70vh] overflow-y-auto px-[14px] pt-6 pb-4 space-y-8 custom-scrollbar">
+        <div className="max-h-[75vh] overflow-y-auto px-[14px] pt-6 pb-4 space-y-8 custom-scrollbar">
           
           {/* Section 1: Already on Flipped? */}
           <div className="space-y-3">
@@ -130,7 +130,7 @@ const ContactDialog = ({ open, onOpenChange }: ContactDialogProps) => {
           <div className={`h-[1px] w-full ${isLight ? "bg-[#C2C4B9]" : "bg-white/10"}`} />
 
           {/* Section 3: Form */}
-          <div className="space-y-4 pb-20">
+          <div className="space-y-4 pb-10">
             <div className="space-y-1">
               <h4 className={`font-instrument text-[20px] ${isLight ? "text-[#1E1E1E]" : "text-white"}`}>
                 Something else on your mind?
