@@ -2,6 +2,8 @@ import { useTheme } from "@/context/ThemeContext";
 import TextureButton from "./ui/texture-btn";
 import { Instagram, Linkedin, Tiktok, Twitter, Youtube } from "@/svgs";
 import HorizontalBorder from "./HorizontalBorder";
+import FlippedText from "@/assets/Flipped-text.png";
+import FlippedTextLight from "@/assets/Flipped-text-light.png";
 
 interface FooterProps {
   onOpenLegal: () => void;
@@ -13,6 +15,7 @@ const footerBtnClass =
 
 const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
 
   const socials = [
     { label: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/company/flippedsocial/about/?viewAsMember=true" },
@@ -23,66 +26,54 @@ const Footer = ({ onOpenLegal, onOpenContact }: FooterProps) => {
   ];
 
   return (
-    <footer className="relative flex min-h-[220px] h-full mb-0  flex-col justify-center overflow-hidden   pt-20 md:min-h-[500px]">
-      {/* Background Large Text */}
-      <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
-        aria-hidden
-      >
-        <span
-          className="whitespace-nowrap font-playfair xl:text-[437px] lg:text-[300px] md:text-[200px] text-[118px] font-light leading-none tracking-[-0.06em] text-transparent bg-clip-text"
-          style={{
-            backgroundImage:
-              "linear-gradient(360deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-        >
-          Flipped
-        </span>
-      </div>
-
-
-      <div className="mb-12 absolute top-4 right-8 sm:right-24 flex flex-col items-center justify-center gap-6 sm:flex-row sm:justify-end sm:gap-8">
-        <div className="flex gap-2">
-
-          <TextureButton
-            text="Legal"
-            onClick={onOpenLegal}
-            className="!text-sm !w-[70px] !h-[30px] !px-3 !py-1 relative"
-          />
-          <TextureButton
-            text="Contact"
-            onClick={onOpenContact}
-            className="!text-sm !w-[85px] !h-[30px] !px-3 !py-1 relative"
-          />
+    <footer className="relative w-full">
+      {/* Content and Branding Wrapper with Clipping */}
+      <div className="relative flex sm:min-h-[290px] min-h-[250px] h-full md:max-w-[1650px] sm:px-4 px-10 mx-auto flex-col justify-center overflow-hidden md:min-h-[550px]">
+        {/* Background Branding */}
+        <div>
+          <img src={isLight ? FlippedTextLight : FlippedText} className="w-full h-full" alt="" />
         </div>
-        <div className="sm:flex hidden items-center gap-5">
-          {socials.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href !== "#" ? "_blank" : undefined}
-              rel={href !== "#" ? "noopener noreferrer" : undefined}
-              className="text-[#FFFFFF99] py-2 hover:text-white transition-colors duration-300"
-              aria-label={label}
-            >
-              <Icon className="h-5 w-5" />
-            </a>
-          ))}
+
+        <div className="mb-12 absolute top-4 sm:right-0 right-6 flex flex-col items-center justify-center gap-6 sm:flex-row sm:justify-end sm:gap-8">
+          <div className="flex gap-2">
+            <TextureButton
+              text="Legal"
+              onClick={onOpenLegal}
+              className="!text-sm !w-[70px] !h-[30px] !px-3 !py-1 relative"
+            />
+            <TextureButton
+              text="Contact"
+              onClick={onOpenContact}
+              className="!text-sm !w-[85px] !h-[30px] !px-3 !py-1 relative"
+            />
+          </div>
+          <div className="sm:flex hidden items-center gap-5">
+            {socials.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href !== "#" ? "_blank" : undefined}
+                rel={href !== "#" ? "noopener noreferrer" : undefined}
+                className={`${isLight ? "text-[#1A1A1A99]" : "text-[#FFFFFF99]"} py-2 hover:text-white transition-colors duration-300`}
+                aria-label={label}
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="sm:bottom-[20%] bottom-[10%] absolute sm:left-[2%] left-1/2 sm:-translate-x-0 -translate-x-1/2 flex justify-start z-10">
+          <p className={`${isLight ? "text-[#1A1A1A80]" : "text-[#FFFFFF80]"} font-anonymous text-[10px] uppercase tracking-widest`}>
+            © 2026 Flipped Social, Inc.
+          </p>
         </div>
       </div>
 
-      <div className="bottom-[9%] absolute sm:left-[17%] left-1/2 sm:-translate-x-0 -translate-x-1/2 flex justify-start">
-        <p className="font-anonymous text-[10px] uppercase tracking-widest text-[#FFFFFF80]">
-          © 2026 Flipped Social, Inc.
-        </p>
-      </div>
-
-      <div className="absolute bottom-16 left-0 right-0">
+      {/* Full-Width Divider - Outside the restricted content wrapper */}
+      <div className="absolute sm:bottom-36 bottom-24 w-full left-0 right-0 pointer-events-none">
         <HorizontalBorder />
       </div>
-
     </footer>
   );
 };

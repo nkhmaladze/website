@@ -29,6 +29,8 @@ export default {
         instrument: ["Instrument Serif", "serif"],
       },
       colors: {
+        "text-primary": "var(--text-primary)",
+        "text-secondary": "var(--text-secondary)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
