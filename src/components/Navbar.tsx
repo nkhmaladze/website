@@ -27,6 +27,7 @@ const socials = [
 
 const Navbar = ({ onOpenAbout }: NavbarProps) => {
   const { resolvedTheme } = useTheme();
+  const isLight = resolvedTheme === "light";
   const [menuOpen, setMenuOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,13 +44,13 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
   }, []);
 
   return (
-    <nav className="relative  3xl:max-w-[1650px] max-w-[1350px] mx-auto w-full z-50 px-6 py-1">
+    <nav className="relative  3xl:max-w-[1650px] max-w-[1450px] mx-auto w-full z-50 px-6 py-1">
       {/* Mobile layout */}
       <div ref={containerRef} className="relative mx-auto flex w-full items-center justify-center gap-3 md:hidden">
         <Link to="/">
           <TextureButton
             className="!w-[50px]"
-            icon={<Flippedicon className="h-[34px] w-[34px]" />}
+            icon={<Flippedicon className={`h-[34px] w-[34px] ${resolvedTheme === "light" ? "text-[#3D3D3DCC]" : "text-[#E8E5E1]"}`} />}
           />
         </Link>
 
@@ -69,8 +70,8 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
 
         {/* Unified Popups Positioned relative to the row center */}
         {menuOpen && (
-          <div className="absolute left-1/2 top-full mt-2 w-44 px-4 -translate-x-1/2 rounded-lg bg-[#1E1E1E] py-1 shadow-lg dark:bg-[#2a2a2a] overflow-hidden z-50">
-            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 z-0 pointer-events-none" style={{ backgroundImage: `url(${flippedBg})` }} />
+          <div className={`absolute left-1/2 top-full mt-2 w-44 px-4 -translate-x-1/2 rounded-lg py-1 shadow-lg overflow-hidden z-50 transition-all duration-300 ${isLight ? "bg-[#E8E5E1] border border-[#C2C4B9]" : "bg-[#1E1E1E] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.2)]"}`}>
+            <div className={`absolute inset-0 bg-cover bg-center bg-no-repeat z-0 pointer-events-none ${isLight ? "opacity-[0.03]" : "opacity-5"}`} style={{ backgroundImage: `url(${flippedBg})` }} />
             <div className="relative z-10 ">
               {[
                 { label: "About", action: () => { onOpenAbout(); setMenuOpen(false); } },
@@ -83,7 +84,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                     <Link
                       to={item.href}
                       onClick={() => setMenuOpen(false)}
-                      className="block py-2 px-3 my-1.5 font-anonymous font-bold uppercase tracking-wider text-white hover:bg-[#C8C4BF1A] dark:hover:bg-[#353535] transition-colors"
+                      className={`block py-2 px-3 my-1.5 font-anonymous font-bold uppercase tracking-wider transition-colors ${isLight ? "text-[#1E1E1E] hover:bg-[#1A1A1A0D]" : "text-white hover:bg-[#FFFFFF1A]"}`}
                     >
                       {item.label}
                     </Link>
@@ -91,12 +92,12 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                     <button
                       type="button"
                       onClick={item.action}
-                      className="block w-full py-2 px-3 my-1.5 text-left font-bold font-anonymous uppercase tracking-wider text-white hover:bg-[#C8C4BF1A] dark:hover:bg-[#353535] transition-colors"
+                      className={`block w-full py-2 px-3 my-1.5 text-left font-bold font-anonymous uppercase tracking-wider transition-colors ${isLight ? "text-[#1E1E1E] hover:bg-[#1A1A1A0D]" : "text-white hover:bg-[#FFFFFF1A]"}`}
                     >
                       {item.label}
                     </button>
                   )}
-                  {index < array.length - 1 && <div className="nav-divider" />}
+                  {index < array.length - 1 && <div className={`h-[1px] w-full ${isLight ? "bg-[#1A1A1A1A]" : "bg-[#FFFFFF1A]"}`} />}
                 </React.Fragment>
               ))}
             </div>
@@ -104,8 +105,8 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
         )}
 
         {socialOpen && (
-          <div className="absolute left-1/2 top-full mt-2 w-44 px-4 -translate-x-1/2 rounded-lg bg-[#1E1E1E] py-1 shadow-lg dark:bg-[#2a2a2a] overflow-hidden z-50">
-            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 z-0 pointer-events-none" style={{ backgroundImage: `url(${flippedBg})` }} />
+          <div className={`absolute left-1/2 top-full mt-2 w-44 px-4 -translate-x-1/2 rounded-lg py-1 shadow-lg overflow-hidden z-50 transition-all duration-300 ${isLight ? "bg-[#E8E5E1] border border-[#C2C4B9]" : "bg-[#1E1E1E] shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.2)]"}`}>
+            <div className={`absolute inset-0 bg-cover bg-center bg-no-repeat z-0 pointer-events-none ${isLight ? "opacity-[0.03]" : "opacity-5"}`} style={{ backgroundImage: `url(${flippedBg})` }} />
             <div className="relative z-10">
               {socials.map((s, index, array) => (
                 <React.Fragment key={s.label}>
@@ -114,11 +115,11 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setSocialOpen(false)}
-                    className="block py-2 px-3 my-1.5  font-anonymous font-bold uppercase tracking-wider text-white hover:bg-[#C8C4BF1A] dark:hover:bg-[#353535] transition-colors"
+                    className={`block py-2 px-3 my-1.5 font-anonymous font-bold uppercase tracking-wider transition-colors ${isLight ? "text-[#1E1E1E] hover:bg-[#1A1A1A0D]" : "text-white hover:bg-[#FFFFFF1A]"}`}
                   >
                     {s.label}
                   </a>
-                  {index < array.length - 1 && <div className="nav-divider" />}
+                  {index < array.length - 1 && <div className={`h-[1px] w-full ${isLight ? "bg-[#1A1A1A1A]" : "bg-[#FFFFFF1A]"}`} />}
                 </React.Fragment>
               ))}
             </div>
@@ -130,7 +131,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
       <div className="relative hidden w-full md:block">
 
         <Link to="/">
-          <h1 className="absolute left-0 top-1/2 z-10 -translate-y-1/2  font-playfair text-xl italic tracking-widest text-[#FFFFFF2A]  md:text-[32px]">Flipped</h1>
+          <h1 className={`absolute left-0 top-1/2 z-10 -translate-y-1/2  font-playfair text-xl italic tracking-widest ${resolvedTheme === "light" ? "text-[#3D3D3DCC]" : "text-[#FFFFFF2A]"}  md:text-[32px]`}>Flipped</h1>
         </Link>
         <div className="flex justify-center px-20 sm:px-24 md:px-28">
           <div className="grid w-full max-w-xl grid-cols-[1fr_auto_1fr] items-center gap-x-2 gap-y-2 md:max-w-2xl md:gap-x-3">
@@ -152,7 +153,7 @@ const Navbar = ({ onOpenAbout }: NavbarProps) => {
             >
               <TextureButton
                 className="!w-[50px]"
-                icon={<Flippedicon className="h-[34px] w-[34px]" />}
+                icon={<Flippedicon className={`h-[34px] w-[34px] ${resolvedTheme === "light" ? "text-[#3D3D3DCC]" : "text-[#E8E5E1]"}`} />}
               />
 
             </Link>

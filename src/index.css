@@ -11,6 +11,8 @@
     color-scheme: light;
     --background: 34 13% 88%;
     --foreground: 220 15% 15%;
+    --text-primary: #1A1A1A;
+    --text-secondary: #1A1A1A99;
 
     --card: 34 10% 83%;
     --card-foreground: 220 15% 15%;
@@ -56,6 +58,9 @@
     color-scheme: dark;
     --background: 0 0% 12%;
     --foreground: 40 10% 85%;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFFFFF;
 
     --card: 220 12% 12%;
     --card-foreground: 40 10% 85%;
@@ -108,6 +113,8 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    width: 100dvw !important;
+    overflow-x: hidden !important;
   }
 
   h1,
